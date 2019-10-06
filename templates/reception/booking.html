@@ -1,0 +1,134 @@
+{% extends 'staff/base.html' %}
+{% block container %}
+<!-- MAIN CONTENT -->
+    <main class="px-3 tm-content">
+      <div class="row">
+        <div class="page-title mr-auto px-3 pt-2">
+          <h4 class="h3">Dashboard</h4>
+        </div>
+        <nav aria-label="breadcrumb" class="ml-auto tm-breads">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'staff:homepage' %}">Home</a></li>
+            <li class="breadcrumb-item" aria-current="page"><a href="#">Booking</a></li>
+          </ol>
+        </nav>
+      </div>
+      <div class="row pt-1 pb-3 pt-sm-2 pb-sm-4">
+        <div class="col-12">
+          <div class="card tm-shadow-btm">
+            <div class="card-header d-flex flex-wrap flex-md-nowrap justify-content-between align-items-center">
+              Book in a User
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                <div class="row">
+                  <form action="#" method="post" class="form-horizontal col-12 col-md-10 col-lg-7">
+                    {% csrf_token %}
+                    <h4>User Info.</h4>
+                    <div class="form-group form-row">
+                      <label for="userName" class="col-12 col-sm-3 col-form-label">Name</label>
+                      <input type="text" placeholder="Full name" name="full_name" id="userName" class="form-control col-12 col-sm-9">
+                    </div>
+                    <div class="form-group form-row">
+                      <label for="phone" class="col-12 col-sm-3 col-form-label">Phone</label>
+                      <input type="tel" placeholder="Phone No." name="phone" id="phone" class="form-control col-12 col-sm-9">
+                    </div>
+                    <div class="form-group form-row">
+                      <label for="email" class="col-12 col-sm-3 col-form-label">Email</label>
+                      <input type="email" placeholder="Email" name="email" id="email" class="form-control col-12 col-sm-9">
+                    </div>
+                    <div class="form-group form-row">
+                      <label for="userNKName" class="col-12 col-sm-3 col-form-label">Next of kin name</label>
+                      <input type="text" placeholder="Next of Kin full name" name="NKName" id="userNKName" class="form-control col-12 col-sm-9">
+                    </div>
+                    <div class="form-group form-row">
+                      <label for="phoneNK" class="col-12 col-sm-3 col-form-label">Next of kin email</label>
+                      <input type="tel" placeholder="Next of Kin phone" name="NKphone" id="phoneNK" class="form-control col-12 col-sm-9">
+                    </div>
+
+                    <hr />
+                    <h4>Room Info.</h4>
+                    <div class="form-group form-row">
+                      <label for="roomNo" class="col-12 col-sm-3 col-form-label">Room No.</label>
+                      <select class="custom-select col-12 col-sm-9" name="room_id" id="roomNo">
+                          {% for child in rooms %}
+                            <option value="{{child.room.pk}}">{{ child.room.room_no }}</option>
+                          {% endfor %}
+                      </select>
+                    </div>
+                    <div class="form-group form-row">
+                      <label for="roomType" class="col-12 col-sm-3 col-form-label">Room Type</label>
+                      <input type="text" value="Room type would appear here" name="room_type" id="roomType" class="form-control col-12 col-sm-9" readonly="">
+                    </div>
+                    <div class="form-group form-row">
+                      <label for="proposed_check_out_date" class="col-12 col-sm-3 col-form-label">Check out date</label>
+                      <input type="date" name="proposed_check_out_date" id="proposed_check_out_date" class="form-control col-12 col-sm-9">
+                    </div>
+                    <div class="form-group form-row">
+                      <label for="roomPrice" class="col-12 col-sm-3 col-form-label">Price</label>
+                      <input type="number" step="1" placeholder="Price" name="price" id="roomPrice" class="form-control col-12 col-sm-9">
+                    </div>
+                    <div class="form-group form-row">
+                      <label for="roomDiscount" class="col-12 col-sm-3 col-form-label">Discount Price</label>
+                      <input type="number" placeholder="Enter discount if any" name="discount" id="roomDiscount" class="form-control col-12 col-sm-9" value="0">
+                    </div>
+                    <div class="form-group form-row">
+                      <label for="roomPassword" class="col-12 col-sm-3 col-form-label">Password</label>
+                      <input type="text" value="{{ password }}" name="password" id="roomPassword" class="form-control col-12 col-sm-9" readonly>
+                    </div>
+                    <div class="form-group text-right">
+                      <button type="submit" class="btn btn-primary">Book</button>
+                    </div>
+                  </form>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </main>
+{% endblock %}
+{% block extra_script %}
+    <script>
+        var room_no = document.getElementById('roomNo');
+        var room_type = document.getElementById('roomType');
+        var price = document.getElementById('roomPrice');
+
+        var dict = {};
+
+        window.onload = function()
+        {
+          //load room basic info to dictionary
+          {% for child in rooms %}
+              dict[{{child.room.pk }}] = {
+                      'room_no':'{{child.room.room_no}}',
+                      'type':
+                            {% if child.room.type.type %}
+                                '{{ child.room.type.type }}'
+                            {% else %}
+                                '----'
+                            {% endif %},
+                       price: {% if child.room.type.price%}
+                                  '{{ child.room.type.price }}'
+                                {% else %}
+                                    '0'
+                                {% endif %}
+                  }
+          {% endfor %}
+
+          selected_change()
+        }
+
+        room_no.onchange = function()
+        {
+          selected_change()
+        }
+
+        function selected_change()
+        {
+          room_type.value = dict[room_no.options[room_no.selectedIndex].value].type
+          price.value = dict[room_no.options[room_no.selectedIndex].value].price
+        }
+    </script>
+{% endblock %}

@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>{% block title %}Gloran Hotel | Welcome{% endblock %}</title>
+  <link rel="shortcut icon" href="{% static 'img/favicon/favicon.ico' %}" type="image/x-icon">
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+  <link href="{% static 'font/ionicons/css/ionicons.min.css' %}" rel="stylesheet" />
+  <link rel="stylesheet" href="{% static 'css/main.min.css' %}" />
+  {% block extra_css %}{% endblock %}
+</head>
+
+
+<body>
+  <div class="wrapper">
+    <!-- HEADER -->
+    <header class="tm-header tm-shadow-btm">
+      <nav class="navbar justify-content-between justify-content-sm-start">
+        <div class="d-none d-sm-block d-md-none tm-semi-close-nav" id="tm-semi-close-nav">
+          <i class="icon ion-ios-arrow-round-back tm-f4 text-white"></i>
+        </div>
+        <a class="navbar-brand" href="{% url 'staff:homepage' %}">Gloran Hotel</a>
+        <button type="button" class="btn btn-primary navbar-toggler border-0 d-sm-none ml-4" data-toggle="collapse"
+          data-target="#sidebarNav" aria-expanded="false" aria-controls="sidebarNav" aria-label="Toggle sidebar nav">
+          <i class="icon ion-ios-menu tm-f4"></i>
+        </button>
+      </nav>
+    </header>
+    <div class="container-fluid tm-main-con">
+      <div class="flex-sm-nowrap">
+        <!-- SIDEBAR -->
+        <aside class="px-1 tm-sidebar border-sm-right text-truncate">
+          <div class="py-2 pt-sm-4 d-none d-sm-flex flex-nowrap justify-content-end justify-content-sm-start align-items-center">
+            <div class="tm-title text-uppercase px-2">Menu</div>
+          </div>
+          <nav class="collapse d-sm-block tm-nav-links py-2 px-0" id="sidebarNav">
+            <ul class="nav flex-column">
+            {% with url_name=request.resolver_match.url_name %}
+              <li class="nav-item ">
+                <a href="{% url 'staff:homepage' %}" class="nav-link {% if url_name == 'homepage' %}tm-sidebar-active{% endif %} clearfix">
+                  <span class="float-left">
+                    <span class="badge mr-2 tm-sidebar-icon"><i class="icon ion-ios-home"></i></span>
+                    <span class="align-text-bottom">Dashboard</span>
+                  </span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{% url 'staff:checkin' %}" class="nav-link {% if url_name == 'checkin' %}tm-sidebar-active{% endif %}">
+                  <span class="badge mr-2 tm-sidebar-icon"><i class="icon ion-ios-checkmark-circle-outline"></i></span>
+                  <span class="align-text-bottom">Check-in</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{% url 'staff:checkout' %}" class="nav-link {% if url_name == 'checkout' %}tm-sidebar-active{% endif %} clearfix">
+                  <span class="float-left">
+                    <span class="badge mr-2 tm-sidebar-icon"><i class="icon ion-ios-exit"></i></span>
+                    <span class="align-text-bottom">Check-out</span>
+                  </span>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="{% url 'staff:reservations' %}" class="nav-link {% if url_name == 'checkout' %}tm-sidebar-active{% endif %} clearfix">
+                  <span class="float-left">
+                    <span class="badge mr-2 tm-sidebar-icon"><i class="icon ion-ios-exit"></i></span>
+                    <span class="align-text-bottom">Reservations</span>
+                  </span>
+                </a>
+              </li>
+
+              <!-- Book -->
+                <li class="nav-item">
+                  <a href="javascript:void(0)" class="nav-link {% if url_name == 'book-room' %}tm-sidebar-active{% endif %} clearfix tm-sidebar-drop" data-toggle="collapse"
+                    data-target="#book" role="button" aria-haspopup="true" aria-expanded="false" aria-controls="book">
+                    <span class="float-left">
+                      <span class="badge mr-2 tm-sidebar-icon"><i class="icon ion-ios-book"></i></span>
+                      <span class="align-text-bottom">Book</span>
+                    </span>
+                    <span class="float-right"><i class="icon ion-ios-arrow-back tm-sidebar-caret"></i></span>
+                  </a>
+                  <div class="collapse py-2 px-3" id="book" data-parent="#tm-sidebar-accor" aria-labelledby="book">
+                    <ul class="nav nav-pills flex-column">
+                      <li class="nav-item">
+                        <a href="{% url 'staff:book-room' 'now' %}" class="nav-link clearfix">
+                          <span class="float-left">
+                            <span class="badge mr-2 tm-sidebar-icon"><i class="icon ion-ios-journal"></i></span>
+                            <span class="align-text-bottom">Now</span>
+                          </span>
+                        </a>
+                      </li>
+                      {% if auth_level == level.admin %}
+                          <li class="nav-item">
+                            <a href="{% url 'staff:book-room' 'reserve' %}" class="nav-link clearfix">
+                              <span class="float-left">
+                                <span class="badge mr-2 tm-sidebar-icon"><i class="icon ion-ios-checkbox"></i></span>
+                                <span class="align-text-bottom">Reserve</span>
+                              </span>
+                            </a>
+                          </li>
+
+                          <li class="nav-item">
+                            <a href="{% url 'staff:book-room' 'public-reservations' %}" class="nav-link clearfix">
+                              <span class="float-left">
+                                <span class="badge mr-2 tm-sidebar-icon"><i class="icon ion-ios-checkmark-circle"></i></span>
+                                <span class="align-text-bottom">Public Reservations</span>
+                              </span>
+                            </a>
+                          </li>
+                      {% endif %}
+                      <li class="nav-item">
+                        <a href="{% url 'staff:book-room' 'take' %}" class="nav-link clearfix">
+                          <span class="float-left">
+                            <span class="badge mr-2 tm-sidebar-icon"><i class="icon ion-ios-checkmark-circle"></i></span>
+                            <span class="align-text-bottom">Take Reservation</span>
+                          </span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+
+              <li class="nav-item">
+                <a href="{% url 'staff:staff-attendance' 'today' %}" class="nav-link {% if url_name == 'staff:attendance' %}tm-sidebar-active{% endif %} clearfix">
+                  <span class="float-left">
+                    <span class="badge mr-2 tm-sidebar-icon"><i class="icon ion-ios-people"></i></span>
+                    <span class="align-text-bottom">Attendance</span>
+                  </span>
+                </a>
+              </li>
+              {% if auth_level >= level.front_desk %}
+                <!-- front desk or higher --->
+                  <!-- order -->
+                  <li class="nav-item">
+                    <a href="javascript:void(0)" class="nav-link clearfix tm-sidebar-drop" data-toggle="collapse"
+                      data-target="#order" role="button" aria-haspopup="true" aria-expanded="false" aria-controls="order">
+                      <span class="float-left">
+                        <span class="badge mr-2 tm-sidebar-icon"><i class="icon ion-ios-paper"></i></span>
+                        <span class="align-text-bottom">Orders</span>
+                      </span>
+                      <span class="float-right"><i class="icon ion-ios-arrow-back tm-sidebar-caret"></i></span>
+                    </a>
+                    <div class="collapse py-2 px-3" id="order" data-parent="#tm-sidebar-accor" aria-labelledby="order">
+                      <ul class="nav nav-pills flex-column">
+                        <li class="nav-item">
+                          <a href="{% url 'staff:order' 'view' %}" class="nav-link clearfix">
+                            <span class="float-left">
+                              <span class="badge mr-2 tm-sidebar-icon"><i class="icon ion-ios-search"></i></span>
+                              <span class="align-text-bottom">View</span>
+                            </span>
+                          </a>
+                        </li>
+                        <li class="nav-item">
+                          <a href="{% url 'staff:order' 'add' %}" class="nav-link clearfix">
+                            <span class="float-left">
+                              <span class="badge mr-2 tm-sidebar-icon"><i class="icon ion-ios-add"></i></span>
+                              <span class="align-text-bottom">Add</span>
+                            </span>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
+
+                  <!-- chat -->
+                  <li class="nav-item">
+                    <a href="{% url 'staff:chat' 'list' %}" class="nav-link clearfix">
+                      <span class="float-left">
+                        <span class="badge mr-2 tm-sidebar-icon"><i class="icon ion-ios-chatbubbles"></i></span>
+                        <span class="align-text-bottom">Chat</span>
+                      </span>
+                    </a>
+                  </li>
+              {% endif %}
+
+              {% if auth_level == level.admin %}
+              <!-- only admin --->
+              <!--<li class="nav-item">-->
+                <!--<a href="" class="nav-link clearfix">-->
+                  <!--<span class="float-left">-->
+                    <!--<span class="badge mr-2 tm-sidebar-icon"><i class="icon ion-ios-people"></i></span>-->
+                    <!--<span class="align-text-bottom">Staff</span>-->
+                  <!--</span>-->
+                <!--</a>-->
+              <!--</li>-->
+              <li class="nav-item">
+                <a href="{% url 'staff:pcu' %}" class="nav-link clearfix">
+                  <span class="badge mr-2 tm-sidebar-icon"><i class="icon ion-ios-mail"></i></span>
+                  <span class="align-text-bottom">Contact Us</span>
+                </a>
+              </li>
+              <div class="py-2 pt-sm-4 d-none d-sm-flex flex-nowrap justify-content-end justify-content-sm-start align-items-center">
+                <div class="tm-title text-uppercase px-2">Financial Matrix</div>
+              </div>
+              <hr />
+              <div class="accordion" id="tm-sidebar-accor">
+
+                <!-- rooms -->
+                <li class="nav-item">
+                  <a href="javascript:void(0)" class="nav-link clearfix tm-sidebar-drop" data-toggle="collapse"
+                    data-target="#rooms" role="button" aria-haspopup="true" aria-expanded="false" aria-controls="rooms">
+                    <span class="float-left">
+                      <span class="badge mr-2 tm-sidebar-icon"><i class="icon ion-ios-albums"></i></span>
+                      <span class="align-text-bottom">Room</span>
+                    </span>
+                    <span class="float-right"><i class="icon ion-ios-arrow-back tm-sidebar-caret"></i></span>
+                  </a>
+                  <div class="collapse py-2 px-3" id="rooms" data-parent="#tm-sidebar-accor" aria-labelledby="rooms">
+                    <ul class="nav nav-pills flex-column">
+                      <li class="nav-item">
+                        <a href="{% url 'staff:room' 'view' %}" class="nav-link clearfix">
+                          <span class="float-left">
+                            <span class="badge mr-2 tm-sidebar-icon"><i class="icon ion-ios-search"></i></span>
+                            <span class="align-text-bottom">View</span>
+                          </span>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="{% url 'staff:create' 'room' %}" class="nav-link clearfix">
+                          <span class="float-left">
+                            <span class="badge mr-2 tm-sidebar-icon"><i class="icon ion-ios-add"></i></span>
+                            <span class="align-text-bottom">Add</span>
+                          </span>
+                        </a>
+                      </li>
+                      <!--<li class="nav-item">-->
+                        <!--<a href="{% url 'staff:create' 'room_type' %}" class="nav-link clearfix">-->
+                          <!--<span class="float-left">-->
+                            <!--<span class="badge mr-2 tm-sidebar-icon"><i class="icon ion-ios-add-circle-outline"></i></span>-->
+                            <!--<span class="align-text-bottom">Add Type</span>-->
+                          <!--</span>-->
+                        <!--</a>-->
+                      <!--</li>-->
+                    </ul>
+                  </div>
+                </li>
+
+                <!-- inventory -->
+                <li class="nav-item">
+                  <a href="javascript:void(0)" class="nav-link clearfix tm-sidebar-drop" data-toggle="collapse"
+                    data-target="#inventory" role="button" aria-haspopup="true" aria-expanded="false" aria-controls="inventory">
+                    <span class="float-left">
+                      <span class="badge mr-2 tm-sidebar-icon"><i class="icon ion-ios-wallet"></i></span>
+                      <span class="align-text-bottom">Inventory</span>
+                    </span>
+                    <span class="float-right"><i class="icon ion-ios-arrow-back tm-sidebar-caret"></i></span>
+                  </a>
+                  <div class="collapse py-2 px-3" id="inventory" data-parent="#tm-sidebar-accor" aria-labelledby="inventory">
+                    <ul class="nav nav-pills flex-column">
+                      <li class="nav-item">
+                        <a href="{% url 'staff:inventory' 'view' %}" class="nav-link clearfix">
+                          <span class="float-left">
+                            <span class="badge mr-2 tm-sidebar-icon"><i class="icon ion-ios-search"></i></span>
+                            <span class="align-text-bottom">View</span>
+                          </span>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="{% url 'staff:inventory' 'add' %}" class="nav-link clearfix">
+                          <span class="float-left">
+                            <span class="badge mr-2 tm-sidebar-icon"><i class="icon ion-ios-add"></i></span>
+                            <span class="align-text-bottom">Add</span>
+                          </span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+
+                <!-- salaries -->
+                <li class="nav-item">
+                  <a href="javascript:void(0)" class="nav-link clearfix tm-sidebar-drop" data-toggle="collapse"
+                    data-target="#salaries" role="button" aria-haspopup="true" aria-expanded="false" aria-controls="salaries">
+                    <span class="float-left">
+                      <span class="badge mr-2 tm-sidebar-icon"><i class="icon ion-ios-apps"></i></span>
+                      <span class="align-text-bottom">Salaries</span>
+                    </span>
+                    <span class="float-right"><i class="icon ion-ios-arrow-back tm-sidebar-caret"></i></span>
+                  </a>
+                  <div class="collapse py-2 px-3" id="salaries" data-parent="#tm-sidebar-accor" aria-labelledby="salaries">
+                    <ul class="nav nav-pills flex-column">
+                      <li class="nav-item">
+                        <a href="{% url 'staff:salary' 'view' %}" class="nav-link clearfix">
+                          <span class="float-left">
+                            <span class="badge mr-2 tm-sidebar-icon"><i class="icon ion-ios-search"></i></span>
+                            <span class="align-text-bottom">View</span>
+                          </span>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="{% url 'staff:salary' 'add' %}" class="nav-link clearfix">
+                          <span class="float-left">
+                            <span class="badge mr-2 tm-sidebar-icon"><i class="icon ion-ios-add"></i></span>
+                            <span class="align-text-bottom">Add</span>
+                          </span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+
+                <!-- expenses -->
+                <li class="nav-item">
+                  <a href="javascript:void(0)" class="nav-link clearfix tm-sidebar-drop" data-toggle="collapse"
+                    data-target="#expenses" role="button" aria-haspopup="true" aria-expanded="false" aria-controls="expenses">
+                    <span class="float-left">
+                      <span class="badge mr-2 tm-sidebar-icon"><i class="icon ion-ios-bookmarks"></i></span>
+                      <span class="align-text-bottom">Expenses</span>
+                    </span>
+                    <span class="float-right"><i class="icon ion-ios-arrow-back tm-sidebar-caret"></i></span>
+                  </a>
+                  <div class="collapse py-2 px-3" id="expenses" data-parent="#tm-sidebar-accor" aria-labelledby="expenses">
+                    <ul class="nav nav-pills flex-column">
+                      <li class="nav-item">
+                        <a href="{% url 'staff:expenses' 'today' %}" class="nav-link clearfix">
+                          <span class="float-left">
+                            <span class="badge mr-2 tm-sidebar-icon"><i class="icon ion-ios-search"></i></span>
+                            <span class="align-text-bottom">View</span>
+                          </span>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="{% url 'staff:expenses' 'add' %}" class="nav-link clearfix">
+                          <span class="float-left">
+                            <span class="badge mr-2 tm-sidebar-icon"><i class="icon ion-ios-add"></i></span>
+                            <span class="align-text-bottom">Add</span>
+                          </span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+
+                <!-- staff management -->
+                <li class="nav-item">
+                  <a href="javascript:void(0)" class="nav-link clearfix tm-sidebar-drop" data-toggle="collapse"
+                    data-target="#SM" role="button" aria-haspopup="true" aria-expanded="false" aria-controls="SM">
+                    <span class="float-left">
+                      <span class="badge mr-2 tm-sidebar-icon"><i class="icon ion-ios-people"></i></span>
+                      <span class="align-text-bottom">Staff</span>
+                    </span>
+                    <span class="float-right"><i class="icon ion-ios-arrow-back tm-sidebar-caret"></i></span>
+                  </a>
+                  <div class="collapse py-2 px-3" id="SM" data-parent="#tm-sidebar-accor" aria-labelledby="SM">
+                    <ul class="nav nav-pills flex-column">
+                      <li class="nav-item">
+                        <a href="{% url 'staff:sm' 'view' %}" class="nav-link clearfix">
+                          <span class="float-left">
+                            <span class="badge mr-2 tm-sidebar-icon"><i class="icon ion-ios-search"></i></span>
+                            <span class="align-text-bottom">View</span>
+                          </span>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="{% url 'staff:create' 'staff' %}" class="nav-link clearfix">
+                          <span class="float-left">
+                            <span class="badge mr-2 tm-sidebar-icon"><i class="icon ion-ios-person-add"></i></span>
+                            <span class="align-text-bottom">Add</span>
+                          </span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+
+                <!-- revenues -->
+                <li class="nav-item">
+                  <a href="javascript:void(0)" class="nav-link clearfix tm-sidebar-drop" data-toggle="collapse"
+                    data-target="#revenues" role="button" aria-haspopup="true" aria-expanded="false" aria-controls="revenues">
+                    <span class="float-left">
+                      <span class="badge mr-2 tm-sidebar-icon"><i class="icon ion-ios-bookmarks"></i></span>
+                      <span class="align-text-bottom">Revenues</span>
+                    </span>
+                    <span class="float-right"><i class="icon ion-ios-arrow-back tm-sidebar-caret"></i></span>
+                  </a>
+                  <div class="collapse py-2 px-3" id="revenues" data-parent="#tm-sidebar-accor" aria-labelledby="revenues">
+                    <ul class="nav nav-pills flex-column">
+                      <li class="nav-item">
+                        <a href="{% url 'staff:revenue' 'view' %}" class="nav-link clearfix">
+                          <span class="float-left">
+                            <span class="badge mr-2 tm-sidebar-icon"><i class="icon ion-ios-search"></i></span>
+                            <span class="align-text-bottom">View</span>
+                          </span>
+                        </a>
+                      </li>
+                      <!--<li class="nav-item">-->
+                        <!--<a href="{% url 'staff:revenue' 'add' %}" class="nav-link clearfix">-->
+                          <!--<span class="float-left">-->
+                            <!--<span class="badge mr-2 tm-sidebar-icon"><i class="icon ion-ios-add"></i></span>-->
+                            <!--<span class="align-text-bottom">Add</span>-->
+                          <!--</span>-->
+                        <!--</a>-->
+                      <!--</li>-->
+                    </ul>
+                  </div>
+                </li>
+              </div>
+              {% endif %}
+              <li class="nav-item">
+                <a href="{% url 'staff:logout' %}" class="nav-link clearfix">
+                  <span class="float-left">
+                    <span class="badge mr-2 tm-sidebar-icon"><i class="icon ion-ios-log-out"></i></span>
+                    <span class="align-text-bottom">Logout</span>
+                  </span>
+                </a>
+              </li>
+
+              <!--<li class="nav-item">-->
+                <!--<a href="{% url 'staff:logout' %}" class="nav-link clearfix">-->
+                  <!--<span class="float-left">-->
+                    <!--<span class="badge mr-2 tm-sidebar-icon"><i class="icon log-out"></i></span>-->
+                    <!--<span class="align-text-bottom">Logout</span>-->
+                  <!--</span>-->
+                <!--</a>-->
+              <!--</li>-->
+            {% endwith %}
+            </ul>
+          </nav>
+        </aside>
+        {% block container %} {% endblock %}
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="tm-footer tm-shadow bg-white text-center clearfix">
+      <div class="offset-sm-4 offset-md-3 offset-xl-2">
+        &copy; Copyright 2019{{message_type}}
+      </div>
+    </div>
+
+
+    <!-- Modal with message -->
+    <div class="modal fade" id="modalDone" tabindex="-1" role="dialog" aria-labelledby="modalDone" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header p-2">
+            <!-- <h5 class="modal-title text-center">Appointment Request</h5> -->
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body p-2">
+            <div class="container-fluid p-0">
+              <div>
+                  {% for child in messages %}
+                    <p class="{% if message_type == positive %}btn btn-success {% elif message_type == negative %}btn btn-danger{% endif %}" >{{child}}</p>
+                  {% endfor %}
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer p-2 justify-content-start">
+            <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'js/main.js' %}"></script>
+</body>
+
+</html>
+{% block extra_script%}
+  {% if messages and message_type != neutral %}
+    <script>
+        $("#modalDone").modal('show');
+    </script>
+  {% endif %}
+{% endblock %}

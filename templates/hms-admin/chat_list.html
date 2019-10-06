@@ -1,0 +1,58 @@
+{% extends 'staff/base.html' %}
+{%block extra_css %}<link rel="stylesheet" href="/static/css/message.css" />{% endblock %}
+{% block container %}
+    <!-- MAIN CONTENT -->
+    <main class="px-3 tm-content">
+      <div class="row">
+        <div class="page-title mr-auto px-3 pt-2">
+          <h4 class="h3">Messages from Rooms</h4>
+        </div>
+        <nav aria-label="breadcrumb" class="ml-auto tm-breads">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          </ol>
+        </nav>
+      </div>
+      <div class="row pt-1 pb-3 pt-sm-2 pb-sm-4">
+        <div class="col-12">
+          <div class="card tm-shadow-btm">
+            <div class="card-header d-flex flex-wrap flex-md-nowrap justify-content-between align-items-center">
+              Chat
+            </div>
+
+
+            <div class="container-fluid h-100">
+  <div class="row justify-content-center h-100">
+            <div class="col-md-4 col-xl-3 chat">
+              <div class="card mb-sm-3 mb-md-5 mt-md-1 contacts_card">
+                <div class="card-header">
+                </div>
+                <div class="card-body contacts_body">
+                  <ul class="contacts">
+                    {% if chat_list %}
+                        {% for room_no in chat_list %}
+                            <li class="contacts_hover">
+                              <div class="">
+                                <a href="{% url 'staff:chat' 'fetch' %}?room_no={{ room_no }}" class="user_info">
+                                    <span>{{ room_no }}</span>
+                                </a>
+                              </div>
+                            </li>
+                        {% endfor %}
+                    {% else %}
+                      No chats started.
+                    {% endif %}
+                  </ul>
+                </div>
+                <div class="card-footer"></div>
+              </div>
+            </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+{% endblock %}

@@ -1,0 +1,76 @@
+{% extends 'staff/base.html' %}
+{% block container %}
+    <!-- MAIN CONTENT -->
+    <main class="px-3 tm-content">
+      <div class="row">
+        <div class="page-title mr-auto px-3 pt-2">
+          <h4 class="h3">Salaries of Employees</h4>
+        </div>
+        <nav aria-label="breadcrumb" class="ml-auto tm-breads">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          </ol>
+        </nav>
+      </div>
+      <div class="card-deck mt-4 mb-3">
+          <div class="table-responsive flex-fill">
+                <table class="table table-hover m-0">
+                  <thead class="thead-light">
+                    <tr>
+                      <th scope="col">S/N</th>
+                      <th scope="col">Name</th>
+                      <th scope="col">Department</th>
+                      <th scope="col">Admin</th>
+                      <th scope="col">Month</th>
+                      <th scope="col">Salary</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                      {% for child in salary_object %}
+                          <tr>
+                            <th scope="row">{{ forloop.counter }}</th>
+                            <td>
+                                {% if child.salary.employee.full_name %}
+                                  {{child.salary.employee.full_name}}
+                                {% else %}
+                                  ----
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if child.salary.employee.department %}
+                                  {{ child.salary.employee.department }}
+                                {% else %}
+                                  ----
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if child.salary.action_by.full_name %}
+                                  {{ child.salary.action_by.full_name }}
+                                {% else %}
+                                  ----
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if child.salary.pay_date %}
+                                  {{ child.salary.pay_date|date:"M" }}
+                                {% else %}
+                                  ----
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if child.salary.amount %}
+                                  {{ child.salary.amount }}
+                                {% else %}
+                                  ----
+                                {% endif %}
+                            </td>
+                          </tr>
+                      {% endfor %}
+
+                  </tbody>
+                </table>
+          </div>
+      </div>
+
+    </main>
+{% endblock %}

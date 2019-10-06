@@ -1,0 +1,82 @@
+{% extends 'staff/base.html' %}
+{% load static %}
+{% block title %}
+  {% if auth_level == settings.Admin.val %}
+    Gloran Hotel | Admin
+  {% elif auth_level == settings.Receptionist.val %}
+  	Gloran Hotel | Reception
+  {% else %}
+  	Gloran Hotel | Unknown
+  {% endif %}
+{% endblock %}
+
+{% block container %}
+  <!-- MAIN CONTENT -->
+  <main class="px-3 tm-content">
+    <div class="row">
+      <div class="page-title mr-auto px-3 pt-2">
+        <h4 class="h3">Dashboard</h4>
+      </div>
+      <nav aria-label="breadcrumb" class="ml-auto tm-breads">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="{% url 'staff:homepage' %}">Home</a></li>
+          <li class="breadcrumb-item" aria-current="page"><a href="{% url 'staff:homepage' %}">Dashboard</a></li>
+        </ol>
+      </nav>
+    </div>
+    <div class="card-deck mt-4 mb-3">
+        <div class="card tm-shadow-out">
+          <div class="p-0 clearfix">
+            <div class="bg-gold py-1 py-sm-4 px-2 col-12 col-lg-4 float-left text-center">
+              <i class="icon ion-ios-help-buoy tm-f3 text-white"></i>
+            </div>
+            <div class="col-12 col-lg-8 px-3 py-3 float-left">
+              <h6 class="mb-2">Total No of Rooms</h6>
+              <h5 class="m-0">{{ all_rooms_count }}</h5>
+              <a href="{% url 'staff:room' 'view' %}" class="btn btn-primary">View all</a>
+            </div>
+          </div>
+        </div>
+        <div class="card tm-shadow-out">
+          <div class="p-0 clearfix">
+            <div class="bg-gold py-1 py-sm-4 px-2 col-12 col-lg-4 float-left text-center">
+              <i class="icon ion-ios-help-buoy tm-f3 text-white"></i>
+            </div>
+            <div class="col-12 col-lg-8 px-3 py-3 float-left">
+              <h6 class="mb-2">Total Free Rooms</h6>
+              <h5 class="m-0">{{ free_rooms_count }}</h5>
+              <a href="{% url 'staff:room' 'view' %}?strict" class="btn btn-primary">View all</a>
+            </div>
+          </div>
+        </div>            
+        <div class="card tm-shadow-out">
+          <div class="p-0 clearfix">
+            <div class="bg-gold py-1 py-sm-4 px-2 col-12 col-lg-4 float-left text-center">
+              <i class="icon ion-ios-notifications tm-f3 text-white"></i>
+            </div>
+            <div class="col-12 col-lg-8 px-3 py-3 float-left">
+              <h6 class="mb-2">Total Occupied Rooms</h6>
+              <h5 class="m-0">{{ booked_rooms_count }}</h5>
+              <a href="{% url 'staff:checkin' %}" class="btn btn-primary">View all</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="card tm-shadow-out">
+          <div class="p-0 clearfix">
+            <div class="bg-gold py-1 py-sm-4 px-2 col-12 col-lg-4 float-left text-center">
+              <i class="icon ion-ios-notifications tm-f3 text-white"></i>
+            </div>
+            <div class="col-12 col-lg-8 px-3 py-3 float-left">
+              <h6 class="mb-2">Total Reservations</h6>
+              <h5 class="m-0">{{ reservations_count }}</h5>
+              <a href="" class="btn btn-primary">View all</a>
+            </div>
+          </div>
+        </div>
+
+    </div>
+    
+  </main>
+
+{% endblock %}

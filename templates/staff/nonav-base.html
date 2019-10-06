@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Gloran Hotel | Staff Portal</title>
+        {% load static %}
+        <link rel="shortcut icon" href="{% static 'img/favicon/favicon.ico' %}" type="image/x-icon">
+        <link rel="stylesheet" href="/static/css/bootstrap.min.css" />
+        <link href="/static/font/ionicons/css/ionicons.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="/static/css/main.min.css" />
+    </head>
+
+    <body>
+        <div class="wrapper tm-bg-img">
+        <!-- HEADER -->
+        <header class="tm-header position-relative tm-shadow-btm">
+          <nav class="navbar">
+            <a class="navbar-brand" href="index.html">Gloran Hotel</a>
+          </nav>
+        </header>
+        {% block content %} 
+        {% endblock %}
+        </div>
+        <script src="/static/js/jquery-3.3.1.min.js"></script>
+        <script src="/static/js/bootstrap.bundle.min.js"></script>
+        <script src="/static/js/main.js"></script>
+    </body>
+</html>
+{% block scripts %}
+{% endblock %}

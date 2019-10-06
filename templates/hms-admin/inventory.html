@@ -1,0 +1,78 @@
+{% extends 'staff/base.html' %}
+{% block container %}
+<!-- MAIN CONTENT -->
+    <main class="px-3 tm-content">
+      <div class="row">
+        <div class="page-title mr-auto px-3 pt-2">
+          <h4 class="h3">Inventory</h4>
+        </div>
+        <nav aria-label="breadcrumb" class="ml-auto tm-breads">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'staff:homepage' %}">Home</a></li>
+          </ol>
+        </nav>
+      </div>
+      <div class="card-deck mt-4 mb-3">
+          <div class="table-responsive flex-fill">
+                <table class="table table-hover m-0">
+                  <thead class="thead-light">
+                    <tr>
+                      <th scope="col">S/N</th>
+                      <th scope="col">Item Name</th>
+                      <th scope="col">Item Type</th>
+                      <th scope="col">Current Stock</th>
+                      <th scope="col">Date</th>
+                      <th scope="col">Admin</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                      {% for child in inventory_object %}
+
+                          <tr>
+                            <th scope="row">{{forloop.counter}}</th>
+                            <td>
+                                {% if child.inventory.item_name %}
+                                    {{child.inventory.item_name}}
+                                {% else%}
+                                    ----
+                                {% endif %}
+                            </td>
+                            <td>
+
+                                {% if child.inventory.item_type %}
+                                    {{child.inventory.item_type}}
+                                {% else %}
+                                    ----
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if child.stock.current %}
+                                    {{child.stock.current}}
+                                {% else %}
+                                    ----
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if child.stock.date %}
+                                    {{child.stock.date}}
+                                {% else %}
+                                    ----
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if child.stock.action_by.email %}
+                                    {{child.stock.action_by.email}}
+                                {% else %}
+                                    ----
+                                {% endif %}
+
+                            </td>
+                        </tr>
+                      {% endfor %}
+                  </tbody>
+                </table>
+          </div>
+      </div>
+
+    </main>
+{% endblock %}

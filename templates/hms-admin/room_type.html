@@ -1,0 +1,77 @@
+{% extends 'staff/base.html' %}
+{% block container %}
+    <!-- MAIN CONTENT -->
+    <main class="px-3 tm-content">
+      <div class="row">
+        <div class="page-title mr-auto px-3 pt-2">
+          <h4 class="h3">Room Type</h4>
+        </div>
+        <nav aria-label="breadcrumb" class="ml-auto tm-breads">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          </ol>
+        </nav>
+      </div>
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+          <span class="sr-only">Close</span>
+        </button>
+        <strong>Failed!</strong> Changes failed.
+      </div>
+      <div class="row pt-1 pb-3 pt-sm-2 pb-sm-4">
+        <div class="col-12">
+          <div class="card tm-shadow-btm">
+            <div class="card-header d-flex flex-wrap flex-md-nowrap justify-content-between align-items-center">
+              Add a Room Type
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                <div class="row">
+                  <form action="" method="post" class="form-horizontal col-12 col-md-10 col-lg-7">
+                    {% csrf_token %}
+                    <div class="form-group form-row">
+                      <label for="room_type" class="col-12 col-sm-3 col-form-label">Room Type</label>
+                      <input type="text" placeholder="Room Type" name="room_type" id="room_type" class="form-control col-12 col-sm-9">
+                    </div>
+
+                    <div class="form-group form-row">
+                      <label for="price" class="col-12 col-sm-3 col-form-label">Price</label>
+                      <input type="number" step="1" placeholder="Price" name="price" id="price" class="form-control col-12 col-sm-9">
+                    </div>
+
+                    <div class="form-group form-row">
+                      <label for="discount" class="col-12 col-sm-3 col-form-label">Discount</label>
+                      <input type="number" step="1" placeholder="Discount" name="discount" id="discount" value="0" class="form-control col-12 col-sm-9">
+                    </div>
+
+                    <div class="form-group form-row">
+                      <label for="room_description" class="col-12 col-sm-3 col-form-label">Description</label>
+                      <textarea placeholder="Room Type" name="room_description" id="room_description" class="form-control col-12 col-sm-9" cols="20" rows="5"></textarea>
+                    </div>
+
+                    <hr />
+                    <h4>Room Services.</h4>
+
+                    <div class="form-group form-row">
+                      <label for="wifi" class="col-12 col-sm-3 col-form-label">WI-FI</label>
+                      <input type="checkbox" name="wifi" id="wifi" value="wifi" class="form-control col-12 col-sm-9">
+                    </div>
+                    <div class="form-group form-row">
+                      <label for="breakfast" class="col-12 col-sm-3 col-form-label">Breakfast</label>
+                      <input type="checkbox" name="breakfast" id="breakfast" value="breakfast" class="form-control col-12 col-sm-9">
+                    </div>
+
+                    <div class="form-group text-right">
+                      <button type="submit" class="btn btn-primary">Create</button>
+                    </div>
+                  </form>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </main>
+{% endblock %}

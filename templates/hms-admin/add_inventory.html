@@ -1,0 +1,55 @@
+{% extends 'staff/base.html' %}
+{% block container %}
+<!-- MAIN CONTENT -->
+    <main class="px-3 tm-content">
+      <div class="row">
+        <div class="page-title mr-auto px-3 pt-2">
+          <h4 class="h3">Dashboard</h4>
+        </div>
+        <nav aria-label="breadcrumb" class="ml-auto tm-breads">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+            <li class="breadcrumb-item" aria-current="page"><a href="{% url 'staff:inventory' 'add' %}">Add Inventory</a></li>
+          </ol>
+        </nav>
+      </div>
+      <div class="row pt-1 pb-3 pt-sm-2 pb-sm-4">
+        <div class="col-12">
+          <div class="card tm-shadow-btm">
+            <div class="card-header d-flex flex-wrap flex-md-nowrap justify-content-between align-items-center">
+              Add a new Item
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                <div class="row">
+                  <form action="" method="post" class="form-horizontal col-12 col-md-10 col-lg-7">
+                    {% csrf_token %}
+                    <div class="form-group form-row">
+                      <label for="expenses" class="col-12 col-sm-3 col-form-label">Item</label>
+                      <input type="text" placeholder="Item Name" name="item_name" id="expenses" class="form-control col-12 col-sm-9" required>
+                    </div>
+
+                    <div class="form-group form-row">
+                      <label for="type" class="col-12 col-sm-3 col-form-label">Item Type</label>
+                      <input type="text" placeholder="Item Type" name="item_type" id="type" class="form-control col-12 col-sm-9" required>
+                    </div>
+
+                    <div class="form-group form-row">
+                      <label for="quantity" class="col-12 col-sm-3 col-form-label">Quantity</label>
+                      <input type="number" step="1" placeholder="Quantity" name="quantity" id="quantity" class="form-control col-12 col-sm-9" required>
+                    </div>
+
+                    <div class="form-group text-right">
+                      <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+
+                  </form>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </main>
+{% endblock %}

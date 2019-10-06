@@ -1,0 +1,69 @@
+{% extends 'staff/base.html' %}
+{% block container %}
+
+    <!-- MAIN CONTENT -->
+    <main class="px-3 tm-content">
+      <div class="row">
+        <div class="page-title mr-auto px-3 pt-2">
+          <h4 class="h3">Orders</h4>
+        </div>
+        <nav aria-label="breadcrumb" class="ml-auto tm-breads">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+            <li class="breadcrumb-item" aria-current="page"><a href="#">Orders</a></li>
+          </ol>
+        </nav>
+      </div>
+      <div class="row pt-1 pb-3 pt-sm-2 pb-sm-4">
+        <div class="col-12">
+          <div class="card tm-shadow-btm">
+            <div class="card-header d-flex flex-wrap flex-md-nowrap justify-content-between align-items-center">
+              Orders Taken
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                <div class="row">
+                  <form action="#" class="form-horizontal col-12 col-md-10 col-lg-7" method="post">
+                    {% csrf_token %}
+                    <div class="form-group form-row">
+                      <label for="room" class="col-12 col-sm-3 col-form-label">Room</label>
+                      <select class="custom-select col-12 col-sm-9" name="room_no" id="room">
+                          {% for child in booking %}
+
+                            <option value="{{child.room.room_no}}">{{child.room.room_no}}</option>
+                          {% endfor %}
+                      </select>
+                    </div>
+                    <div class="form-group form-row">
+                      <label for="inventory" class="col-12 col-sm-3 col-form-label">Inventory</label>
+                      <select class="custom-select col-12 col-sm-9" name="item" id="inventory">
+                        {% for child in inventory_object %}
+                            <option value="{{child.inventory.item_name}}">{{child.inventory.item_name}}</option>
+                          {% endfor %}
+                      </select>
+                    </div>
+                    <div class="form-group form-row">
+                      <label for="price" class="col-12 col-sm-3 col-form-label">Price</label>
+                      <input type="number" step="0.01" placeholder="price" name="price" id="price" class="form-control col-12 col-sm-9">
+                    </div>
+                    <div class="form-group form-row">
+                      <label for="quantity" class="col-12 col-sm-3 col-form-label">Quantity</label>
+                      <input type="number" step="0.01" placeholder="quantity" name="quantity" id="quantity" class="form-control col-12 col-sm-9">
+                    </div>
+                    <div class="form-group form-row">
+                      <label for="reason" class="col-12 col-sm-3 col-form-label">Reason</label>
+                      <textarea placeholder="Enter reason for this expenses" name="reason" id="reason" class="form-control col-12 col-sm-9"></textarea>
+                    </div>
+                    <div class="form-group text-right">
+                      <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                  </form>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </main>
+{% endblock %}

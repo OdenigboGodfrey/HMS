@@ -1,0 +1,43 @@
+{% extends 'staff/base.html' %}
+{% block container %}
+<!-- MAIN CONTENT -->
+    <main class="px-3 tm-content">
+      <div class="row">
+        <div class="page-title mr-auto px-3 pt-2">
+          <h4 class="h3">Revenues Made</h4>
+        </div>
+        <nav aria-label="breadcrumb" class="ml-auto tm-breads">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">Total: {{revenue_total}}</li>
+          </ol>
+        </nav>
+      </div>
+      <div class="card-deck mt-4 mb-3">
+          <div class="table-responsive flex-fill">
+                <table class="table table-hover m-0">
+                  <thead class="thead-light">
+                    <tr>
+                      <th scope="col">S/N</th>
+                      <th scope="col">Amount</th>
+                      <th scope="col">Month</th>
+                        <th scope="col">Type</th>
+                      <th scope="col">Admin</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                      {% for child in revenue_object %}
+                        <tr>
+                          <th scope="row">{{ forloop.counter }}</th>
+                            <td>{{ child.revenue.amount }}</td>
+                            <td>{{ child.revenue.date|date:"M" }}</td>
+                            <td>{{ child.revenue.type }}</td>
+                            <td>{{ child.revenue.action_by.full_name }}</td>
+                        </tr>
+                      {% endfor %}
+                  </tbody>
+                </table>
+          </div>
+      </div>
+
+    </main>
+{% endblock %}
