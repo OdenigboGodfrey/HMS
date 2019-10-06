@@ -1,2 +1,2 @@
 # HMS
-A hotel managing system
+A hotel managment system built with the django framework.
