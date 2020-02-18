@@ -1,0 +1,103 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <title> {% block title %}  {% endblock %} </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="shortcut icon" href="{% static 'img/favicon/favicon.ico' %}" type="image/x-icon">
+    <link href="{% static 'css/pages/bootstrap.css' %}" rel="stylesheet">
+    <link href="{% static 'css/pages/font-awesome.css' %}" rel="stylesheet">
+    <link href="{% static 'css/pages/superslides.css' %}" rel="stylesheet">
+    <link href="{% static 'css/pages/jquery.fancybox.css' %}" rel="stylesheet">
+    <link href="{% static 'css/pages/select2.css' %}" rel="stylesheet">
+    <link href="{% static 'css/pages/smoothness/jquery-ui-1.10.0.custom.css' %}" rel="stylesheet">
+    <link href="{% static 'css/pages/owl.carousel.css' %}" rel="stylesheet">
+    <link href="{% static 'css/pages/slick.css' %}" rel="stylesheet">
+    <link href="{% static 'css/pages/style.css' %}" rel="stylesheet">
+  </head>
+  <body class="not-front page-about">
+    <div id="main">
+      <div class="top-wrapper">
+        <div class="top-inner" id="top-inner">
+           
+            <div class="top2-wrapper">
+                <div class="container">
+                    <div class="top2 clearfix">
+                        <div class="logo_header">
+                            <div class="logo_wrapper">
+                                <a href="{% url 'home' %}" class="logo">
+                                    <img src="{% static 'img/pages/logo.png' %}" alt="" class="logo_img">
+                                </a>
+                            </div>
+                        </div>
+                        <nav class="navbar_ navbar navbar-expand-md clearfix">
+
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent2" aria-controls="navbarSupportedContent2" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+
+                            
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent2">
+                                <ul class="nav navbar-nav sf-menu clearfix">
+                                {% with url_name=request.resolver_match.url_name %}
+                                    <li class="nav-item">
+                                        <a href="{% url 'home' %}" class="nav-link {% if url_name == 'home' %}active{% endif %}">Home <i aria-hidden="true"></i></a>
+                                       
+                                    </li>
+                                    <li class="nav-item"><a href="{% url 'about' %}" class="nav-link {% if url_name == 'about' %}active{% endif %}">About us</a></li>
+                                    <li class="nav-item sub-menu sub-menu-2">
+                                        <a href="{% url 'rooms' %}" class="nav-link {% if url_name == 'rooms' %}active{% endif %}">Rooms <i aria-hidden="true"></i></a>
+                                        
+                                    </li>
+                                    
+                                    <li class="nav-item"><a href="{% url 'contact' %}" class="nav-link {% if url_name == 'contact' %}active{% endif %}">Contact</a></li>
+                                {% endwith %}
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+      {% block container %} {% endblock %}
+      
+      <div class="bot3-wrapper">
+        <div class="container">
+          <div class="bot3 clearfix">
+            <ul class="menu-bot">
+              <li><a href="{% url 'about' %}">About</a></li>
+              <li><a href="{% url 'home' %}">Home</a></li>
+              <li><a href="{% url 'rooms' %}">Rooms</a></li>
+              <li><a href="{% url 'contact' %}">Contact</a></li>
+            </ul>
+
+            <div class="copyrights">Copyright @2019. All Rights Reserved</div>
+
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+    <script src="{% static 'js/pages/jquery.min.js' %}"></script>
+    <script src="{% static 'js/pages/superfish.js' %}"></script>
+    <script src="{% static 'js/pages/jquery.superslides.js' %}"></script>
+    <script src="{% static 'js/pages/jquery.fancybox.js' %}"></script>
+    <script src="{% static 'js/pages/jquery.sticky.js' %}"></script>
+    <script src="{% static 'js/pages/jquery.easing.1.3.js' %}"></script>
+    <script src="{% static 'js/pages/select2.js' %}"></script>
+    <script src="{% static 'js/pages/jquery-ui.js' %}"></script>
+    <script src="{% static 'js/pages/owl.carousel.js' %}"></script>
+    <script src="{% static 'js/pages/slick.js' %}"></script>
+    <script src="{% static 'js/pages/jquery.appear.js' %}"></script>
+
+    <script src="{% static 'js/pages/popper.min.js' %}"></script>
+    <script src="{% static 'js/pages/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/pages/scripts.js' %}"></script>
+    <script src="{% static 'js/pages/yjsg.yjsgroundprogress.js' %}"></script>
+
+  </body>
+</html>

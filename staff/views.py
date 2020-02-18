@@ -432,11 +432,11 @@ def order(request, type):
         update_context(context, result)
         return render(request, "hms-admin/place_order.html", context)
     elif type == 'view':
-        result = base.hotel_management().get_revenue(type='all')
+        result = base.hotel_room().get_orders(type='all')
         print(result)
         if result['status'] != settings.NEGATIVE:
-            context['revenue_object'] = result['revenue_object']
-            context['revenue_total'] = result['total']
+            context['orders_object'] = result['orders_object']
+            context['orders_total'] = result['total']
 
         update_context(context, result)
         return render(request, "hms-admin/admin_revenues.html", context)

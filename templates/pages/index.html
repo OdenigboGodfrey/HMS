@@ -1,0 +1,719 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <title>
+        GLORAN HOTEL AND EVENT PLACE OWERRI
+    </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="shortcut icon" href="{% static 'img/favicon/favicon.ico' %}" type="image/x-icon">
+    <link href="{% static 'css/pages/bootstrap.css' %}" rel="stylesheet">
+    <link href="{% static 'css/pages/font-awesome.css' %}" rel="stylesheet">
+    <link href="{% static 'css/pages/superslides.css' %}" rel="stylesheet">
+    <link href="{% static 'css/pages/jquery.fancybox.css' %}" rel="stylesheet">
+    <link href="{% static 'css/pages/select2.css' %}" rel="stylesheet">
+    <link href="{% static 'css/pages/smoothness/jquery-ui-1.10.0.custom.css' %}" rel="stylesheet">
+    <link href="{% static 'css/pages/owl.carousel.css' %}" rel="stylesheet">
+    <link href="{% static 'css/pages/slick.css' %}" rel="stylesheet">
+    <link href="{% static 'css/pages/style.css' %}" rel="stylesheet">
+    <style>
+        .room-wrapper{
+            max-height: 500px !important;
+            min-height: 500px !important;
+        }
+    </style>
+</head>
+<body class="front" data-spy="scroll" data-target="#top-inner" data-offset="0">
+<div id="main">
+    <div class="top-wrapper top-wrapper-dark">
+        <div class="top-inner" id="top-inner">
+           
+            <div class="top2-wrapper">
+                <div class="container">
+                    <div class="top2 clearfix">
+                        <div class="logo_header">
+                            <div class="logo_wrapper">
+                                <a href="{% url 'home' %}" class="logo">
+                                    <img src="{% static 'img/pages/logo.png' %}" alt="" class="logo_img">
+                                </a>
+                            </div>
+                        </div>
+                        <nav class="navbar_ navbar navbar-expand-md clearfix">
+
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent2" aria-controls="navbarSupportedContent2" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+
+                            
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent2">
+                                <ul class="nav navbar-nav sf-menu clearfix">
+                                {% with url_name=request.resolver_match.url_name %}
+                                    <li class="nav-item">
+                                        <a href="{% url 'home' %}" class="nav-link {% if url_name == 'home' %}active{% endif %}">Home <i aria-hidden="true"></i></a>
+                                       
+                                    </li>
+                                    <li class="nav-item"><a href="{% url 'about' %}" class="nav-link {% if url_name == 'about' %}active{% endif %}">About us</a></li>
+                                    <li class="nav-item sub-menu sub-menu-2">
+                                        <a href="#rooms" class="nav-link {% if url_name == 'home#room' %}active{% endif %}">Rooms <i aria-hidden="true"></i></a>
+                                        
+                                    </li>
+                                    
+                                    <li class="nav-item"><a href="{% url 'contact' %}" class="nav-link {% if url_name == 'contact' %}active{% endif %}">Contact</a></li>
+                                {% endwith %}
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="home" class="">
+        <div id="home-inner" class="home-inner">
+            <div id="slides_wrapper" class="">
+                <div id="slides">
+                    <ul class="slides-container">
+                        <li>
+                            <img src="{% static 'img/pages/presidential_suite03.jpg' %}" alt="" class="img">
+                        </li>
+                        <li>
+                            <img src="{% static 'img/pages/veronica_hall1.jpg' %}" alt="" class="img">
+                        </li>
+                        
+                        <li>
+                            <img src="{% static 'img/pages/gloran_gym.jpg' %}" alt="" class="img">
+                        </li>
+                        
+
+                    </ul>
+                </div>
+            </div>
+            <div class="slide-buttons-wrapper">
+                <div class="container">
+                    <div class="slide-buttons clearfix">
+                        <div class="slide-button">
+                            <a href="#">
+                                <div class="ic"><img src="{% static 'img/pages/slide-ic1.png' %}" alt="" class="img-fluid"></div>
+                                <div class="hr"></div>
+                                <div class="txt1">Hotel</div>
+                            </a>
+                        </div>
+                        <div class="slide-button">
+                            <a href="#">
+                                <div class="ic"><img src="{% static 'img/pages/slide-ic2.png' %}" alt="" class="img-fluid"></div>
+                                <div class="hr"></div>
+                                <div class="txt1">Breakfast</div>
+                            </a>
+                        </div>
+                        <div class="slide-button">
+                            <a href="#">
+                                <div class="ic"><img src="{% static 'img/pages/slide-ic3.png' %}" alt="" class="img-fluid"></div>
+                                <div class="hr"></div>
+                                <div class="txt1">Fitness Club</div>
+                            </a>
+                        </div>
+                        <div class="slide-button">
+                            <a href="#">
+                                <div class="ic"><img src="{% static 'img/pages/slide-ic4.png' %}" alt="" class="img-fluid"></div>
+                                <div class="hr"></div>
+                                <div class="txt1">Support 24/7</div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="booking-wrapper">
+            <div class="container">
+                <div class="booking-inner clearfix">
+                    <form action="{% url 'rooms' %}" class="form1 clearfix">
+                        <div class="col1 c1">
+                            <div class="input1_wrapper">
+                                <label>Check in</label>
+                                <div class="input1_inner">
+                                    <input type="text" class="form-control input datepicker" placeholder="Check in">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col1 c2">
+                            <div class="input1_wrapper">
+                                <label>Check out</label>
+                                <div class="input1_inner">
+                                    <input type="text" class="form-control input datepicker" placeholder="Check out">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col2 c3">
+                            <div class="select1_wrapper">
+                                <label>Adults</label>
+                                <div class="select1_inner">
+                                    <select class="select2 select" style="width: 100%">
+                                        <option value="1">1 Adult</option>
+                                        <option value="2">2 Adults</option>
+                                        <option value="3">3 Adults</option>
+                                        <option value="4">4 Adults</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col2 c4">
+                            <div class="select1_wrapper">
+                                <label>Children</label>
+                                <div class="select1_inner">
+                                    <select class="select2 select" style="width: 100%">
+                                        <option value="1">Children</option>
+                                        <option value="1">1 Child</option>
+                                        <option value="2">2 Children</option>
+                                        <option value="3">3 Children</option>
+                                        <option value="4">4 Children</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col2 c5">
+                            <div class="select1_wrapper">
+                                <label>Rooms</label>
+                                <div class="select1_inner">
+                                    <select class="select2 select" style="width: 100%">
+                                        <option value="1">1 Room</option>
+                                        <option value="2">2 Rooms</option>
+                                        <option value="3">3 Rooms</option>
+                                        <option value="4">4 Rooms</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col3 c6">
+                            <button type="submit" class="btn-form1-submit">CHECK AVAILABILITY</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="top-wrapper content"></div>
+    <div id="about">
+        <div class="container">
+
+            <div class="title1">About Gloran Hotel</div>
+
+
+            <div class="about-slider-wrapper clearfix">
+                <div class="about-slider-left">
+                    <figure class="about-slider-thumb">
+                        <img src="{% static 'img/pages/about00.jpeg' %}" alt="" class="img-fluid">
+                    </figure>
+                    <div class="slider-for">
+                        <div class="slider-item">
+                            <img src="{% static 'img/pages/outside_h3.jpg' %}" alt="" class="img-fluid">
+                        </div>
+                        <div class="slider-item">
+                            <img src="{% static 'img/pages/outside_e3.jpg' %}" alt="" class="img-fluid">
+                        </div>
+                        <div class="slider-item">
+                            <img src="{% static 'img/pages/reception_b3.jpg' %}" alt="" class="img-fluid">
+                        </div>
+                    </div>
+                </div>
+                 <div class="about-slider-right">
+                    <div class="slider-nav">
+                        <div class="slider-item">
+                            <div class="txt1">
+                                A HOTEL WITH TASTE.
+                            </div>
+                            <div class="txt4">
+                                <p>
+                                    Welcome to Gloran Hotel and Event Place, your number one hotel in Owerri. We're dedicated to giving you the very best of rooms and relaxations, with a focus on security and comfort..
+                                </p>
+                                <p>
+                                    Founded in January,  2019, Gloran Hotel and Event Place management is passionate about "eco-friendly" accommodations borne out of robust research, so we can offer you competitive rooms at yet affordable prices and satisfy you with quality services. We now serve customers all over the country, and are thrilled that we're able to turn our passion into a business.
+                                </p>
+                                <p>
+                                    We hope you enjoy our environment as much as we enjoy offering them to you. For enquiries or comments, please don't hesitate to contact us.
+                                    GLO-RAN Hotel and Event Place
+                                    .....Hospitality with Divine Presence!!
+                                </p>
+                            </div>
+                        </div>
+                        <div class="slider-item">
+                            <div class="txt1">
+                                FEEL AT HOME.
+                            </div>
+                            <div class="txt4">
+                                <p>
+                                    Welcome to Gloran Hotel and Event Place, your number one hotel in Owerri. We're dedicated to giving you the very best of rooms and relaxations, with a focus on security and comfort..
+                                </p>
+                                <p>
+                                    Founded in January,  2019, Gloran Hotel and Event Place management is passionate about "eco-friendly" accommodations borne out of robust research, so we can offer you competitive rooms at yet affordable prices and satisfy you with quality services. We now serve customers all over the country, and are thrilled that we're able to turn our passion into a business.
+                                </p>
+                                <p>
+                                    We hope you enjoy our environment as much as we enjoy offering them to you. For enquiries or comments, please don't hesitate to contact us.
+                                    GLO-RAN Hotel and Event Place
+                                    .....Hospitality with Divine Presence!!
+                                </p>
+                            </div>
+                        </div>
+                       <div class="slider-item">
+                            <div class="txt1">
+                                A HOME AWAY FROM HOME
+                            </div>
+                            <div class="txt4">
+                                <p>
+                                    Welcome to Gloran Hotel and Event Place, your number one hotel in Owerri. We're dedicated to giving you the very best of rooms and relaxations, with a focus on security and comfort..
+                                </p>
+                                <p>
+                                    Founded in January,  2019, Gloran Hotel and Event Place management is passionate about "eco-friendly" accommodations borne out of robust research, so we can offer you competitive rooms at yet affordable prices and satisfy you with quality services. We now serve customers all over the country, and are thrilled that we're able to turn our passion into a business.
+                                </p>
+                                <p>
+                                    We hope you enjoy our environment as much as we enjoy offering them to you. For enquiries or comments, please don't hesitate to contact us.
+                                    GLO-RAN Hotel and Event Place
+                                    .....Hospitality with Divine Presence!!
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div id="rooms">
+        <div class="container">
+
+            <div class="title1">ROOMS AND HALLS</div>
+
+
+            <div class="row">
+                <div class="col-md-6 col-lg-4">
+                    <div class="room-wrapper">
+                        <div class="room-inner">
+                            <div class="room">
+                                <figure>
+                                    <img src="{% static 'img/pages/presidential_suite_home.jpg' %}" alt="" class="img-fluid">
+                                    <figcaption>
+                                        <div class="txt1">PRESIDENTIAL SUITES</div>
+                                        <div class="txt2">START FROM &#8358 45,500</div>
+                                    </figcaption>
+                                </figure>
+                                <div class="caption">
+                                    <div class="txt1">PRESIDENTIAL SUITES</div>
+                                    <div class="txt2">
+                                        39 REVEW
+                                        <div class="small-stars">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                        </div>
+                                    </div>
+                                    <div class="txt3">
+                                        Enjoy the full treat of GLO-RAN presidential suit well equipped for your luxury and com...
+                                    </div>
+                                </div>
+                                <div class="select-txt">
+                                    <a href="{% url 'presidential' %}"><span>SELECT THIS ROOM<i class="fa fa-angle-right" aria-hidden="true"></i></span></a>
+                                </div>
+                                <div class="room-icons">
+                                    <div class="room-ic room-ic-wifi">
+                                        <i class="fa fa-wifi" aria-hidden="true"></i>
+                                        <div class="txt1">FREE WIFI</div>
+                                    </div>
+                                    <div class="room-ic room-ic-breakfast">
+                                        <i class="fa fa-coffee" aria-hidden="true"></i>
+                                        <div class="txt1">BREAKFAST<br>INCLUDED</div>
+                                    </div>
+                                    <div class="room-ic room-ic-left">
+                                        <div class="txt0">2</div>
+                                        <div class="txt1">ROOMS LEFT</div>
+                                    </div>
+                                    <div class="room-ic room-ic-discount">
+                                        <div class="txt0">35<span>%</span></div>
+                                        <div class="txt1">DISCOUNT</div>
+                                    </div>
+                                    <div class="room-price">
+                                        <div class="txt1"><span>&#8358 45,500</span></div>
+                                        <div class="txt2">PER NIGHT</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="room-wrapper" >
+                        <div class="room-inner" >
+                            <div class="room" >
+                                <figure>
+                                    <img src="{% static 'img/pages/twin_delight_d3.jpg' %}" alt="" class="img-fluid">
+                                    <figcaption>
+                                        <div class="txt1">TWIN DELIGHT</div>
+                                        <div class="txt2">START FROM &#8358 39,000</div>
+                                    </figcaption>
+                                </figure>
+                                <div class="caption">
+                                    <div class="txt1">TWIN DELIGHT</div>
+                                    <div class="txt2">
+                                        39 REVEW
+                                        <div class="small-stars">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                        </div>
+                                    </div>
+                                    <div class="txt3">
+                                        We offer you twin delight to accommodate your famil...
+                                    </div>
+                                </div>
+                                <div class="select-txt">
+                                    <a href="{% url 'delight' %}"><span>SELECT THIS ROOM<i class="fa fa-angle-right" aria-hidden="true"></i></span></a>
+                                </div>
+                                <div class="room-icons">
+                                    <div class="room-ic room-ic-wifi">
+                                        <i class="fa fa-wifi" aria-hidden="true"></i>
+                                        <div class="txt1">FREE WIFI</div>
+                                    </div>
+                                     <div class="room-ic room-ic-discount">
+                                        <div class="txt0">35<span>%</span></div>
+                                        <div class="txt1">DISCOUNT</div>
+                                    </div>
+                                    <div class="room-ic room-ic-breakfast">
+                                        <i class="fa fa-coffee" aria-hidden="true"></i>
+                                        <div class="txt1">BREAKFAST<br>INCLUDED</div>
+                                    </div>
+                                    <div class="room-ic room-ic-left">
+                                        <div class="txt0">8</div>
+                                        <div class="txt1">ROOMS LEFT</div>
+                                    </div>
+                                    <div class="room-price">
+                                        <div class="txt1"><span>&#8358 39,000</span></div>
+                                        <div class="txt2">PER NIGHT</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="room-wrapper">
+                        <div class="room-inner">
+                            <div class="room">
+                                <figure>
+                                    <img src="{% static 'img/pages/contemporary_suit_g3.jpg' %}" alt="" class="img-fluid">
+                                    <figcaption>
+                                        <div class="txt1">CONTEMPORARY SUITE</div>
+                                        <div class="txt2">START FROM &#8358 32,500</div>
+                                    </figcaption>
+                                </figure>
+                                <div class="caption">
+                                    <div class="txt1">CONTEMPORARY</div>
+                                    <div class="txt2">
+                                        87 REVEW
+                                        <div class="small-stars">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                        </div>
+                                    </div>
+                                    <div class="txt3">
+                                       Gloran contemporary suites are packaged to meet internatio...
+                                   </div>
+                                </div>
+                                <div class="select-txt">
+                                    <a href="{% url 'contemporary' %}"><span>SELECT THIS ROOM<i class="fa fa-angle-right" aria-hidden="true"></i></span></a>
+                                </div>
+                                <div class="room-icons">
+                                    <div class="room-ic room-ic-wifi">
+                                        <i class="fa fa-wifi" aria-hidden="true"></i>
+                                        <div class="txt1">FREE WIFI</div>
+                                    </div>
+                                    <div class="room-ic room-ic-breakfast">
+                                        <i class="fa fa-coffee" aria-hidden="true"></i>
+                                        <div class="txt1">BREAKFAST<br>INCLUDED</div>
+                                    </div>                                    
+                                    <div class="room-ic room-ic-left">
+                                        <div class="txt0">4</div>
+                                        <div class="txt1">ROOMS LEFT</div>
+                                    </div>
+                                    <div class="room-ic room-ic-discount">
+                                        <div class="txt0">35<span>%</span></div>
+                                        <div class="txt1">DISCOUNT</div>
+                                    </div>
+                                    <div class="room-price">
+                                        <div class="txt1"><span>&#8358 32,000</span></div>
+                                        <div class="txt2">PER NIGHT</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                
+                <div>
+                    <a href="{% url 'rooms' %}"><button class="btn mt-4 text-white" style="background-color: #722f37;">View More Rooms</button></a>
+                </div>
+
+
+
+        </div>
+
+    </div>
+
+
+    <div id="best-places">
+        <div class="container">
+
+            <div class="title1">BEST PLACES AROUND GLORAN</div>
+            <div class="title2">FIND YOUR PLACE</div>
+
+            <div class="owl-carousel owl-carousel-wide">
+                <div class="item">
+                    <div class="place-wrapper">
+                        <div class="place-inner">
+                            <div class="place clearfix">
+                                <div class="caption">
+                                    <div class="txt1">GLORAN BAR</div>
+                                    <div class="text-block1">
+                                        <div class="text-block1-inner">
+                                            <div class="txt2">CITIZEN'S BAR</div>
+                                            <div class="txt3"><i class="fa fa-map-marker" aria-hidden="true"></i>
+                                                CITIZEN'S BAR
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="txt4">
+                                        Provides you with assorted drinks especially exotic ones for your delight. In addition, you c enjoy them with some delicacies and bites such as fish barbecue, beef stake, beef kebabs, Samo Sa, sharwama, roast chicken, peppered goat meat, isi ewu, nkwobi etc.
+                                    </div>
+                                </div>
+                                <figure class="figure">
+                                    <img src="{% static 'img/pages/bar_a2.jpg' %}" alt="" class="img-fluid">
+                                </figure>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="place-wrapper">
+                        <div class="place-inner">
+                            <div class="place clearfix">
+                                <div class="caption">
+                                    <div class="txt1">RESTAURANT </div>
+                                    <div class="text-block1">
+                                        <div class="text-block1-inner">
+                                            <div class="txt2">CHELSEA RESTAURANT</div>
+                                            <div class="txt3"><i class="fa fa-map-marker" aria-hidden="true"></i>
+                                                CHELSEA RESTAURANT
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="txt4">
+                                        GLO-RAN restaurant called Chelsea Restaurant offers you high quality local and intercontinental dishes in the most hygienic environment. Our chefs are professionals with long standing experience and our waiters are well trained to serve you. The treat in Chelsea restaurant is second to none!
+                                    </div>
+                                    <!-- <div class="txt5">
+                                        <div class="rest1 clearfix">
+                                            <figure><img src="{% static 'img/pages/ic1.png' %}" alt="" class="img-fluid"></figure>
+                                            <div class="rest1-caption">
+                                                <div class="rest1-txt1">Sauna</div>
+                                                <div class="rest1-txt2">INCLUDES</div>
+                                            </div>
+                                        </div>
+                                        <div class="rest1 clearfix">
+                                            <figure><img src="{% static 'img/pages/ic2.png' %}" alt="" class="img-fluid"></figure>
+                                            <div class="rest1-caption">
+                                                <div class="rest1-txt1">SPA</div>
+                                                <div class="rest1-txt2">INCLUDES</div>
+                                            </div>
+                                        </div>
+                                        <div class="rest1 clearfix">
+                                            <figure><img src="{% static 'img/pages/ic3.png' %}" alt="" class="img-fluid"></figure>
+                                            <div class="rest1-caption">
+                                                <div class="rest1-txt1">Free</div>
+                                                <div class="rest1-txt2">Massage</div>
+                                            </div>
+                                        </div>
+                                    </div> -->
+                                </div>
+                                <figure class="figure">
+                                    <img src="{% static 'img/pages/restaurant_b2.jpg' %}" alt="" class="img-fluid">
+                                </figure>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="place-wrapper">
+                        <div class="place-inner">
+                            <div class="place clearfix">
+                                <div class="caption">
+                                    <div class="txt1">GLORAN GYM </div>
+                                    <div class="text-block1">
+                                        <div class="text-block1-inner">
+                                            <div class="txt2">GLORAN GYM</div>
+                                            <div class="txt3"><i class="fa fa-map-marker" aria-hidden="true"></i>
+                                                GYM
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="txt4">
+                                        We have a GYM room for your workout, well equipped with quality modern materials. Our professional instructors are available and ever ready to guide you!
+                                    </div>
+                                </div>
+                                <figure class="figure">
+                                    <img src="{% static 'img/pages/gym_a2.jpg' %}" alt="" class="img-fluid">
+                                </figure>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+    <div id="what-client-say">
+        <div class="container">
+
+          <div class="title1">WHAT CLIENT SAY</div>
+
+          <div class="title2">I will like to be here next summer vacation</div>
+
+          <div class="owl-carousel owl-carousel-testimonials">
+            <div class="item">
+              <div class="testimonial-wrapper">
+                <div class="testimonial-inner">
+                  <div class="testimonial clearfix">
+                    <div class="testimonial-caption">
+                      "I would like to personally thank the team and let you know they were incredible in the process of getting the new version of their gym equipments to where it needed to be."
+                    </div>
+                    <div class="author clearfix">
+                      <div class="caption">
+                        <div class="txt1">Ndukwu Val</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="testimonial-wrapper">
+                <div class="testimonial-inner">
+                  <div class="testimonial clearfix">
+                    <div class="testimonial-caption">
+                      "It was a great night in the Twin Delight. It's really a delight."
+                    </div>
+                    <div class="author clearfix">
+                      <div class="caption">
+                        <div class="txt1">Ogar Silas</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="testimonial-wrapper">
+                <div class="testimonial-inner">
+                  <div class="testimonial clearfix">
+                    <div class="testimonial-caption">
+                      "I love the foods served in the restaurant!"
+                    </div>
+                    <div class="author clearfix">
+                      <div class="caption">
+                        <div class="txt1">Chijindu Iwuchukwu</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="item">
+              <div class="testimonial-wrapper">
+                <div class="testimonial-inner">
+                  <div class="testimonial clearfix">
+                    <div class="testimonial-caption">
+                      "The idea is really a welcome one. Love what they put up here"
+                    </div>
+                    <div class="author clearfix">
+                      <div class="caption">
+                        <div class="txt1">Sarah Some</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+
+
+
+
+        </div>
+      </div>
+
+      </div>
+      </div>
+      <div class="bot1-wrapper">
+        <div class="container">
+          <div class="bot1 clearfix">
+            <div class="social2-wrapper">
+              <ul class="social2">
+                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+              </ul>
+            </div>
+            <p>
+              <i>Are you tired of seeing the same thing over and over again in different hotels? Have you considered a smart hotel? Check out Gloran Hotels Limited for a difference.</i>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="bot3-wrapper">
+        <div class="container">
+          <div class="bot3 clearfix">
+            <ul class="menu-bot">
+              <li><a href="{% url 'about' %}">About</a></li>
+              <li><a href="{% url 'home' %}">Home</a></li>
+              <li><a href="{% url 'rooms' %}">Rooms</a></li>
+              <li><a href="{% url 'contact' %}">Contact</a></li>
+            </ul>
+
+            <div class="copyrights">Copyright @2019. All Rights Reserved</div>
+
+          </div>
+        </div>
+      </div>
+
+
+</div>
+<script src="{% static 'js/pages/jquery.min.js' %}"></script>
+<script src="{% static 'js/pages/superfish.js' %}"></script>
+<script src="{% static 'js/pages/jquery.superslides.js' %}"></script>
+<script src="{% static 'js/pages/jquery.fancybox.js' %}"></script>
+<script src="{% static 'js/pages/jquery.sticky.js' %}"></script>
+<script src="{% static 'js/pages/jquery.easing.1.3.js' %}"></script>
+<script src="{% static 'js/pages/select2.js' %}"></script>
+<script src="{% static 'js/pages/jquery-ui.js' %}"></script>
+<script src="{% static 'js/pages/owl.carousel.js' %}"></script>
+<script src="{% static 'js/pages/slick.js' %}"></script>
+<script src="{% static 'js/pages/jquery.appear.js' %}"></script>
+
+<script src="{% static 'js/pages/popper.min.js' %}"></script>
+<script src="{% static 'js/pages/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/pages/scripts.js' %}"></script>
+
+</body>
+</html>

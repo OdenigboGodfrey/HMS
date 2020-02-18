@@ -1,0 +1,98 @@
+{% extends 'pages/base_site.html' %}
+{% load static %}
+
+{% block title %} Contact | GLORAN HOTEL AND EVENT PLACE OWERRI {% endblock %}
+
+{% block container %}
+
+    <div class="breadcrumbs1_wrapper">
+        <div class="container">
+            <div class="breadcrumbs1"><a href="{% url 'home' %}">Home</a><span>|</span>Contacts</div>
+        </div>
+    </div>
+    <div id="content">
+        <div class="container">
+
+            <div class="title1">CONTACT INFORMATION</div>
+
+            <div class="title2">Get in touch with us and book your room in minutes</div>
+
+                {% if messages_count > 0 %}
+                    <div class="alert alert-info alert-dismissible fade show" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        {% for child in messages %}
+                            <strong>{{ child }}</strong>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
+            <div class="contact-location-wrapper">
+                <div id="google_map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1985.820969178348!2d7.0056764!3d5.4711649!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x10425b4fe8ba9313%3A0x85d86f6e274b1a68!2sGLO-RAN+HOTEL+AND+EVENT+PLACE%2C+OWERRI!5e0!3m2!1sen!2sng!4v1559818690003!5m2!1sen!2sng" width="600" height="500" frameborder="0" style="border:0" allowfullscreen></iframe>
+                </div>
+                <div class="contact-location">
+                    <div class="txt1">KEEP IN TOUCH</div>
+                    <div class="txt2">GLORAN HOTEL ADDRESS</div>
+                    <div class="txt3">GLORAN HOTEL</div>
+                    <div class="txt4">Plot H1 Industrial Layout<br />Off SUBEB Junction<br />Federal Secretariat Extension<br />New Owerri<br>by Ebere links, Imo state</div>
+                    <div class="txt5">
+                        <dl class="dl1">
+                            <dt>Call:</dt>
+                            <dd>+234 906 000 9787, +234 813 039 8457</dd>
+
+                            <dt>Email:</dt>
+                            <dd><a href="#">info@gloranhotel.com</a></dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+
+            <div class="title3">CONTACT FORM</div>
+
+            <div id="note"></div>
+            <div id="fields">
+                <form id="ajax-contact-form" class="form-horizontal clearfix" action="{% url 'contact' %}" method="post">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-md-6">
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="inputName2">Name <span>*</span></label>
+                                        <input type="text" class="form-control" id="inputName2" name="name" required="">
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="inputEmail">Email <span>*</span></label>
+                                        <input type="text" class="form-control" id="inputEmail" name="email" required="">
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                        <div class="col-md-6">
+
+                            <div class="form-group">
+                                <label for="inputMessage2">Message <span>*</span></label>
+                                <textarea class="form-control" rows="5" id="inputMessage2" name="content" required=""></textarea>
+                                <small>To book more rooms or payment issues, please indicate in the message.</small>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <button type="submit" class="btn-default btn-cf-submit">send your message</button>
+                </form>
+            </div>
+
+
+        </div>
+    </div>
+{% endblock %}

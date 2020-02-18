@@ -555,7 +555,7 @@ class hotel_room:
                 else:
                     rooms = room.objects.filter(reserved=0, status=1)
 
-                print(rooms)
+                print(rooms[0].type.discount)
                 print(len(rooms))
 
                 if rooms is not None and len(rooms) > 0:
@@ -569,7 +569,7 @@ class hotel_room:
                                 sub_content = {'room': room_object}
                                 data['rooms'].append(sub_content)
                 elif len(rooms) == 0:
-                    print('here')
+                    # print('here')
                     raise Exception('No free rooms available.')
                 else:
                     raise Exception('Failed to get free rooms.')
@@ -705,13 +705,19 @@ class hotel_room:
         :param Post:
         :return:
         """
-        data = utilities().init_data()
+        data = utilities().init_data(post_extras={'orders': [], 'total': 0})
 
         try:
             if type == 'all':
                 orders_object = order.objects.all()
                 if orders_object is not None:
-                    data['orders_object']
+                    if only_count:
+                        data['total'] = len(orders_object)
+                    else:
+                        for child in orders_object:
+                            data['orders'].append(child)
+                            data['total'] += 1
+                    # data['orders_object'] = orders_object
             else:
                 raise Exception('Unknown Type.')
         except:
@@ -777,10 +783,11 @@ class hotel_room:
                             public_booking_object.save()
 
                         """ save to revenue """
-                        result = hotel_management().add_revenue(Id, {'amount': POST['price'],
-                                                                     'source': booking_object.pk,
-                                                                     'message': "",
-                                                                     'type': 'booking'})
+                        if 'reserve' not in POST:
+                            result = hotel_management().add_revenue(Id, {'amount': POST['price'],
+                                                                         'source': booking_object.pk,
+                                                                         'message': "",
+                                                                         'type': 'booking'})
                         if result['status'] == settings.NEGATIVE:
                             data['messages'].extend(result['messages'])
                         else:

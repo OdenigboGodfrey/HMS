@@ -1,0 +1,86 @@
+{% extends 'pages/base_site.html' %}
+{% load static %}
+
+{% block title %} Booking | GLORAN HOTEL AND EVENT PLACE OWERRI {% endblock %}
+
+{% block container %}
+
+    <div class="breadcrumbs1_wrapper">
+        <div class="container">
+            <div class="breadcrumbs1"><a href="{% url 'home' %}">Home</a><span>|</span>Reservation</div>
+        </div>
+    </div>
+    <div id="content">
+        <div class="container">
+
+            <div class="title1">YOUR INFORMATION</div>
+
+            <div id="note"></div>
+            <div id="fields">
+                <form id="ajax-contact-form" class="form-horizontal clearfix" action="{% url 'book' %}">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="full_name">Full Name <span>*</span></label>
+                                        <input type="text" class="form-control" id="full_name" name="full_name" placeholder="Full name">
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="mail">E-mail <span>*</span></label>
+                                        <input type="email" class="form-control" id="mail" name="mail" value="" placeholder="E-mail">
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="phone">Phone <span>*</span></label>
+                                        <input type="tel" class="form-control" id="phone" name="phone" placeholder="Phone">
+                                    </div>
+                                </div>
+                                <h4 class="h5">Next Of Kin</h4>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="name">Name <span>*</span></label>
+                                        <input type="text" class="form-control" id="name" name="name" placeholder="Full name">
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="n_phone">Phone <span>*</span></label>
+                                        <input type="tel" class="form-control" id="n_phone" name="n_phone" placeholder="Phone">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="check_in">Check-in date <span>*</span></label>
+                                        <input type="date" class="form-control" id="check_in" name="check_in">
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="check_out">Check-out date <span>*</span></label>
+                                        <input type="date" class="form-control" id="check_out" name="check_out" >
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <button type="submit" class="btn-default btn-cf-submit">Reserve Room</button>
+                </form>
+            </div>
+
+
+        </div>
+    </div>
+{% endblock %}

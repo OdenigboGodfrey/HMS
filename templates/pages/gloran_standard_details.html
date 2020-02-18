@@ -1,0 +1,101 @@
+{% extends 'pages/base_site.html' %}
+{% load static %}
+
+{% block title %} Details | Gloran Standard {% endblock %}
+
+{% block container %}
+
+<div class="breadcrumbs1_wrapper">
+        <div class="container">
+            <div class="breadcrumbs1"><a href="{% url 'home' %}">Home</a><span>|</span>Details</div>
+        </div>
+    </div>
+    <div id="content">
+        <div class="container">
+
+            <div class="title1">GLORAN STANDARD ROOM</div>
+
+            <div class="title2">Thanks for selecting this room. Read the details and proceed to book</div>
+
+            <div class="slider2-wrapper">
+                <div class="slider-for2">
+                    <div class="slider-item">
+                        <img src="{% static 'img/pages/standard_a1.jpg' %}" alt="" class="img-fluid">
+                    </div>
+                    <div class="slider-item">
+                        <img src="{% static 'img/pages/standard_c1.jpg' %}" alt="" class="img-fluid">
+                    </div>
+                    <div class="slider-item">
+                        <img src="{% static 'img/pages/standard_a1.jpg' %}" alt="" class="img-fluid">
+                    </div>
+                    <div class="slider-item">
+                        <img src="{% static 'img/pages/standard_c1.jpg' %}" alt="" class="img-fluid">
+                    </div>
+                    <div class="slider-item">
+                        <img src="{% static 'img/pages/standard_a1.jpg' %}" alt="" class="img-fluid">
+                    </div>
+                </div>
+
+                <div class="slider-nav2">
+                    <div class="slider-item">
+                        <div class="slider-item-inner">
+                            <img src="{% static 'img/pages/standard_a1.jpg' %}" style="height: 150px; width: 150px" alt="" class="img-fluid">
+                        </div>
+                    </div>
+                    <div class="slider-item">
+                        <div class="slider-item-inner">
+                            <img src="{% static 'img/pages/standard_c1.jpg' %}" style="height: 150px; width: 150px" alt="" class="img-fluid">
+                        </div>
+                    </div>
+                    <div class="slider-item">
+                        <div class="slider-item-inner">
+                            <img src="{% static 'img/pages/standard_a1.jpg' %}" style="height: 150px; width: 150px" alt="" class="img-fluid">
+                        </div>
+                    </div>
+                    <div class="slider-item">
+                        <div class="slider-item-inner">
+                            <img src="{% static 'img/pages/standard_c1.jpg' %}" style="height: 150px; width: 150px" alt="" class="img-fluid">
+                        </div>
+                    </div>
+                    <div class="slider-item">
+                        <div class="slider-item-inner">
+                            <img src="{% static 'img/pages/standard_a1.jpg' %}" style="height: 150px; width: 150px" alt="" class="img-fluid">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="details-wrapper clearfix">
+                <div class="txt2">GLORAN STANDARD ROOM</div>
+                <div class="txt4">
+                                <p>
+                                    GLO-RAN standard rooms meet standard by any definition. ...Your comfort is well secured. 
+                                </p>
+                            </div>
+                <div class="details-caption">
+                    <div class="txt1">01</div>
+                    <div class="txt21">GLORAN STANDARD ROOM</div>
+                </div>
+            </div>
+
+            <div class="details2-wrapper">
+                <div class="row align-items-start">
+                    <div class="col-md-4">
+                        <div class="details2-info">
+                            <div class="check1">{% if standard and standard > 0 %}{{ standard }}: <span>AVAILABLE</span>{% else %} UNAVAILABLE {% endif %}</div>
+                            <div>
+                                <a href="#" class="details2-link">
+                                    <div class="txt1">&#8358 9,500 <span>TOTAL</span></div>
+                                    <a href="{% url 'book' %}?type=standard"><div class="txt2">RESERVE THIS ROOM</div></a>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}

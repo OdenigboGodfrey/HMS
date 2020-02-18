@@ -70,7 +70,7 @@
                     </div>
                     <div class="form-group form-row">
                       <label for="roomDiscount" class="col-12 col-sm-3 col-form-label">Discount Price</label>
-                      <input type="number" placeholder="Enter discount if any" name="discount" id="roomDiscount" class="form-control col-12 col-sm-9" value="0">
+                      <input type="text" placeholder="Enter discount if any" name="discount" id="roomDiscount" class="form-control col-12 col-sm-9" value="{{ child.room.type }}">
                     </div>
                     <div class="form-group form-row">
                       <label for="roomPassword" class="col-12 col-sm-3 col-form-label">Password</label>
@@ -94,6 +94,7 @@
         var room_no = document.getElementById('roomNo');
         var room_type = document.getElementById('roomType');
         var price = document.getElementById('roomPrice');
+        var roomDiscount = document.getElementById('roomDiscount');
 
         var dict = {};
 
@@ -113,7 +114,12 @@
                                   '{{ child.room.type.price }}'
                                 {% else %}
                                     '0'
-                                {% endif %}
+                                {% endif %},
+                      discount: {% if child.room.type.discount %}
+                                  '{{ child.room.type.discount }}'
+                                {% else %}
+                                    '0'
+                                {% endif %},
                   }
           {% endfor %}
 
@@ -127,8 +133,9 @@
 
         function selected_change()
         {
-          room_type.value = dict[room_no.options[room_no.selectedIndex].value].type
-          price.value = dict[room_no.options[room_no.selectedIndex].value].price
+          room_type.value = dict[room_no.options[room_no.selectedIndex].value].type;
+          price.value = dict[room_no.options[room_no.selectedIndex].value].price;
+          roomDiscount.value = dict[room_no.options[room_no.selectedIndex].value].discount;
         }
     </script>
 {% endblock %}

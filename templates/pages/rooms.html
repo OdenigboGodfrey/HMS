@@ -1,0 +1,579 @@
+{% extends 'pages/base_site.html' %}
+{% load static %}
+
+{% block title %} Room Reservation {% endblock %}
+
+
+{% block container %}
+
+	<div class="breadcrumbs1_wrapper">
+        <div class="container">
+            <div class="breadcrumbs1"><a href="{% url 'home' %}">Home</a><span>|</span>Rooms</div>
+        </div>
+    </div>
+    <div id="content">
+        <div class="container">
+
+            <div class="title1">RESERVATION</div>
+
+            <div class="title2">SELECT FROM OUR ROOMS</div>
+
+            <div id="second-tab-group" class="tabgroup">
+                <div id="tabs2-1">
+
+                    <!-- first row for rooms -->
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="room-wrapper">
+                                <div class="room-inner">
+                                    <div class="room">
+                                        <figure>
+                                            <img src="{% static 'img/pages/presidential_suite_home.jpg' %}" alt="" class="img-fluid">
+                                            <figcaption>
+                                                <div class="txt1">PRESIDENTIAL SUITES</div>
+                                                <div class="txt2">START FROM &#8358 45,500</div>
+                                            </figcaption>
+                                        </figure>
+                                        <div class="caption">
+                                            <div class="txt1">PRESIDENTIAL SUITES</div>
+                                            <div class="txt2">
+                                                6 REVIEW
+                                                <div class="small-stars">
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                </div>
+                                            </div>
+                                            <div class="txt3">
+                                                Enjoy the full treat of GLO-RAN presidential suit well equipped for your luxury and com...
+                                            </div>
+                                        </div>
+                                        <div class="select-txt">
+                                            <a href="{% url 'presidential' %}"><span>SELECT THIS ROOM<i class="fa fa-angle-right" aria-hidden="true"></i></span></a>
+                                        </div>
+                                        <div class="room-icons">
+                                            <div class="room-ic room-ic-wifi">
+                                                <i class="fa fa-wifi" aria-hidden="true"></i>
+                                                <div class="txt1">FREE WIFI</div>
+                                            </div>
+                                            <div class="room-ic room-ic-breakfast">
+                                                <i class="fa fa-coffee" aria-hidden="true"></i>
+                                                <div class="txt1">BREAKFAST<br>INCLUDED</div>
+                                            </div>
+                                            <div class="room-ic room-ic-left">
+                                                <div class="txt0">
+                                                    {% if presidential and presidential > 0 %}
+                                                        {{presidential}}
+                                                    {% else %}
+                                                        0
+                                                    {% endif %}
+                                                </div>
+                                                <div class="txt1">ROOMS LEFT</div>
+                                            </div>
+                                            <div class="room-ic room-ic-discount">
+                                                <div class="txt0">35<span>%</span></div>
+                                                <div class="txt1">DISCOUNT</div>
+                                            </div>
+                                            <div class="room-price">
+                                                <div class="txt1"><span>&#8358 45,500</span></div>
+                                                <div class="txt2">PER NIGHT</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="room-wrapper" >
+                                <div class="room-inner" >
+                                    <div class="room" >
+                                        <figure>
+                                            <img src="{% static 'img/pages/twin_delight_d3.jpg' %}" alt="" class="img-fluid">
+                                            <figcaption>
+                                                <div class="txt1">TWIN DELIGHT</div>
+                                                <div class="txt2">START FROM &#8358 39,000</div>
+                                            </figcaption>
+                                        </figure>
+                                        <div class="caption">
+                                            <div class="txt1">TWIN DELIGHT</div>
+                                            <div class="txt2">
+                                                8 REVIEW
+                                                <div class="small-stars">
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star" style="color: #808080"></i>
+                                                </div>
+                                            </div>
+                                            <div class="txt3">
+                                                We offer you twin delight to accommodate your famil...
+                                            </div>
+                                        </div>
+                                        <div class="select-txt">
+                                            <a href="{% url 'delight' %}"><span>SELECT THIS ROOM<i class="fa fa-angle-right" aria-hidden="true"></i></span></a>
+                                        </div>
+                                        <div class="room-icons">
+                                            <div class="room-ic room-ic-wifi">
+                                                <i class="fa fa-wifi" aria-hidden="true"></i>
+                                                <div class="txt1">FREE WIFI</div>
+                                            </div>
+                                             <div class="room-ic room-ic-discount">
+                                                <div class="txt0">35<span>%</span></div>
+                                                <div class="txt1">DISCOUNT</div>
+                                            </div>
+                                            <div class="room-ic room-ic-breakfast">
+                                                <i class="fa fa-coffee" aria-hidden="true"></i>
+                                                <div class="txt1">BREAKFAST<br>INCLUDED</div>
+                                            </div>
+                                            <div class="room-ic room-ic-left">
+                                                <div class="txt0">
+                                                    {% if twin and twin > 0 %}
+                                                        {{twin}}
+                                                    {% else %}
+                                                        0
+                                                    {% endif %}
+                                                </div>
+                                                <div class="txt1">ROOMS LEFT</div>
+                                            </div>
+                                            <div class="room-price">
+                                                <div class="txt1"><span>&#8358 39,000</span></div>
+                                                <div class="txt2">PER NIGHT</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="room-wrapper">
+                                <div class="room-inner">
+                                    <div class="room">
+                                        <figure>
+                                            <img src="{% static 'img/pages/contemporary_suit_g3.jpg' %}" alt="" class="img-fluid">
+                                            <figcaption>
+                                                <div class="txt1">CONTEMPORARY SUITE</div>
+                                                <div class="txt2">START FROM &#8358 32,500</div>
+                                            </figcaption>
+                                        </figure>
+                                        <div class="caption">
+                                            <div class="txt1">CONTEMPORARY</div>
+                                            <div class="txt2">
+                                                21 REVIEW
+                                                <div class="small-stars">
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star" style="color: #808080"></i>
+                                                    <i class="fa fa-star" style="color: #808080"></i>
+                                                </div>
+                                            </div>
+                                            <div class="txt3">
+                                               Gloran contemporary suites are packaged to meet internatio...
+                                           </div>
+                                        </div>
+                                        <div class="select-txt">
+                                            <a href="{% url 'contemporary' %}"><span>SELECT THIS ROOM<i class="fa fa-angle-right" aria-hidden="true"></i></span></a>
+                                        </div>
+                                        <div class="room-icons">
+                                            <div class="room-ic room-ic-wifi">
+                                                <i class="fa fa-wifi" aria-hidden="true"></i>
+                                                <div class="txt1">FREE WIFI</div>
+                                            </div>
+                                            <div class="room-ic room-ic-breakfast">
+                                                <i class="fa fa-coffee" aria-hidden="true"></i>
+                                                <div class="txt1">BREAKFAST<br>INCLUDED</div>
+                                            </div>                                         
+                                            <div class="room-ic room-ic-left">
+                                                <div class="txt0">
+                                                    {% if contemporary and contemporary > 0 %}
+                                                        {{contemporary}}
+                                                    {% else %}
+                                                        0
+                                                    {% endif %}
+                                                </div>
+                                                <div class="txt1">ROOMS LEFT</div>
+                                            </div>
+                                            <div class="room-ic room-ic-discount">
+                                                <div class="txt0">35<span>%</span></div>
+                                                <div class="txt1">DISCOUNT</div>
+                                            </div>
+                                            <div class="room-price">
+                                                <div class="txt1"><span>&#8358 32,000</span></div>
+                                                <div class="txt2">PER NIGHT</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end of first row for room -->
+
+                     <!-- Second row for rooms -->
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="room-wrapper">
+                                <div class="room-inner">
+                                    <div class="room">
+                                        <figure>
+                                            <img src="{% static 'img/pages/cozy_deluxe_b3.jpg' %}" alt="" class="img-fluid">
+                                            <figcaption>
+                                                <div class="txt1">COZY DELUXE</div>
+                                                <div class="txt2">START FROM &#8358 26,000</div>
+                                            </figcaption>
+                                        </figure>
+                                        <div class="caption">
+                                            <div class="txt1">COZY DELUXE</div>
+                                            <div class="txt2">
+                                                11 REVIEW
+                                                <div class="small-stars">
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star" style="color: #808080"></i>
+                                                </div>
+                                            </div>
+                                            <div class="txt3">
+                                                There is no one who doesn't like a cozy environment:...
+                                            </div>
+                                        </div>
+                                        <div class="select-txt">
+                                            <a href="{% url 'cozy' %}"><span>SELECT THIS ROOM<i class="fa fa-angle-right" aria-hidden="true"></i></span></a>
+                                        </div>
+                                        <div class="room-icons">
+                                            <div class="room-ic room-ic-wifi">
+                                                <i class="fa fa-wifi" aria-hidden="true"></i>
+                                                <div class="txt1">FREE WIFI</div>
+                                            </div>
+                                            <div class="room-ic room-ic-breakfast">
+                                                <i class="fa fa-coffee" aria-hidden="true"></i>
+                                                <div class="txt1">BREAKFAST<br>INCLUDED</div>
+                                            </div>
+                                            <div class="room-ic room-ic-left">
+                                                <div class="txt0">
+                                                    {% if cozy and cozy > 0 %}
+                                                        {{cozy}}
+                                                    {% else %}
+                                                        0
+                                                    {% endif %}
+                                                </div>
+                                                <div class="txt1">ROOMS LEFT</div>
+                                            </div>
+                                            <div class="room-ic room-ic-discount">
+                                                <div class="txt0">
+                                                    35<span>%</span></div>
+                                                <div class="txt1">DISCOUNT</div>
+                                            </div>
+                                            <div class="room-price">
+                                                <div class="txt1"><span>&#8358 26,000</span></div>
+                                                <div class="txt2">PER NIGHT</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="room-wrapper" >
+                                <div class="room-inner" >
+                                    <div class="room" >
+                                        <figure>
+                                            <img src="{% static 'img/pages/diamond_room_c3.jpg' %}" alt="" class="img-fluid">
+                                            <figcaption>
+                                                <div class="txt1">DIAMOND ROOM</div>
+                                                <div class="txt2">START FROM &#8358 22,750</div>
+                                            </figcaption>
+                                        </figure>
+                                        <div class="caption">
+                                            <div class="txt1">DIAMOND ROOM</div>
+                                            <div class="txt2">
+                                                13 REVIEW
+                                                <div class="small-stars">
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star" style="color: #808080"></i>
+                                                    <i class="fa fa-star" style="color: #808080"></i>
+                                                </div>
+                                            </div>
+                                            <div class="txt3">
+                                                Want to enjoy a room with exquisite features? Think GLO-RAN Diamond...
+                                            </div>
+                                        </div>
+                                        <div class="select-txt">
+                                            <a href="{% url 'diamond' %}"><span>SELECT THIS ROOM<i class="fa fa-angle-right" aria-hidden="true"></i></span></a>
+                                        </div>
+                                        <div class="room-icons">
+                                            <div class="room-ic room-ic-wifi">
+                                                <i class="fa fa-wifi" aria-hidden="true"></i>
+                                                <div class="txt1">FREE WIFI</div>
+                                            </div>
+                                             <div class="room-ic room-ic-discount">
+                                                <div class="txt0">35<span>%</span></div>
+                                                <div class="txt1">DISCOUNT</div>
+                                            </div>
+                                            <div class="room-ic room-ic-breakfast">
+                                                <i class="fa fa-coffee" aria-hidden="true"></i>
+                                                <div class="txt1">BREAKFAST<br>INCLUDED</div>
+                                            </div>
+                                            <div class="room-ic room-ic-left">
+                                                <div class="txt0">
+                                                    {% if diamond and diamond > 0 %}
+                                                        {{diamond}}
+                                                    {% else %}
+                                                        0
+                                                    {% endif %}
+                                                </div>
+                                                <div class="txt1">ROOMS LEFT</div>
+                                            </div>
+                                            <div class="room-price">
+                                                <div class="txt1"><span>&#8358 22,750</span></div>
+                                                <div class="txt2">PER NIGHT</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="room-wrapper">
+                                <div class="room-inner">
+                                    <div class="room">
+                                        <figure>
+                                            <img src="{% static 'img/pages/gloran_delux_b3.jpg' %}" alt="" class="img-fluid">
+                                            <figcaption>
+                                                <div class="txt1">GLORAN DELUXE</div>
+                                                <div class="txt2">START FROM &#8358 19,500</div>
+                                            </figcaption>
+                                        </figure>
+                                        <div class="caption">
+                                            <div class="txt1">GLORAN DELUXE</div>
+                                            <div class="txt2">
+                                                87 REVIEW
+                                                <div class="small-stars">
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star" style="color: #808080"></i>
+                                                    <i class="fa fa-star" style="color: #808080"></i>
+                                                </div>
+                                            </div>
+                                            <div class="txt3">
+                                               If you need undisturbed comfort in abundance,...
+                                           </div>
+                                        </div>
+                                        <div class="select-txt">
+                                            <a href="{% url 'deluxe' %}"><span>SELECT THIS ROOM<i class="fa fa-angle-right" aria-hidden="true"></i></span></a>
+                                        </div>
+                                        <div class="room-icons">
+                                            <div class="room-ic room-ic-wifi">
+                                                <i class="fa fa-wifi" aria-hidden="true"></i>
+                                                <div class="txt1">FREE WIFI</div>
+                                            </div>
+                                            <div class="room-ic room-ic-breakfast">
+                                                <i class="fa fa-coffee" aria-hidden="true"></i>
+                                                <div class="txt1">BREAKFAST<br>INCLUDED</div>
+                                            </div>
+                                            <div class="room-ic room-ic-left">
+                                                <div class="txt0">
+                                                    {% if deluxe and deluxe > 0 %}
+                                                        {{ deluxe }}
+                                                    {% else %}
+                                                        0
+                                                    {% endif %}
+                                                </div>
+                                                <div class="txt1">ROOMS LEFT</div>
+                                            </div>
+                                            <div class="room-ic room-ic-discount">
+                                                <div class="txt0">35<span>%</span></div>
+                                                <div class="txt1">DISCOUNT</div>
+                                            </div>
+                                            <div class="room-price">
+                                                <div class="txt1"><span>&#8358 19,500</span></div>
+                                                <div class="txt2">PER NIGHT</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end of Second row for room -->
+
+
+                     <!-- Third row for rooms -->
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="room-wrapper">
+                                <div class="room-inner">
+                                    <div class="room">
+                                        <figure>
+                                            <img src="{% static 'img/pages/standard_a3.jpg' %}" alt="" class="img-fluid">
+                                            <figcaption>
+                                                <div class="txt1">GLORAN STANDARD</div>
+                                                <div class="txt2">START FROM &#8358 9,500</div>
+                                            </figcaption>
+                                        </figure>
+                                        <div class="caption">
+                                            <div class="txt1">GLORAN STANDARD</div>
+                                            <div class="txt2">
+                                                19 REVIEW
+                                                <div class="small-stars">
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                </div>
+                                            </div>
+                                            <div class="txt3" style="height: 10em;">
+                                                GLO-RAN standard rooms meet standard by any definition. ...
+                                            </div>
+                                        </div>
+                                        <div class="select-txt">
+                                            <a href="{% url 'standard' %}"><span>SELECT THIS ROOM<i class="fa fa-angle-right" aria-hidden="true"></i></span></a>
+                                        </div>
+                                        <div class="room-icons">
+                                            <div class="room-ic room-ic-wifi">
+                                                <i class="fa fa-wifi" aria-hidden="true"></i>
+                                                <div class="txt1">FREE WIFI</div>
+                                            </div>
+                                            <div class="room-ic room-ic-breakfast">
+                                                <i class="fa fa-coffee" aria-hidden="true"></i>
+                                                <div class="txt1">BREAKFAST<br>INCLUDED</div>
+                                            </div>
+                                            <div class="room-ic room-ic-left">
+                                                <div class="txt0">
+                                                    {% if standard and standard > 0 %}
+                                                        {{ standard }}
+                                                    {% else %}
+                                                        0
+                                                    {% endif %}
+                                                </div>
+                                                <div class="txt1">ROOMS LEFT</div>
+                                            </div>
+                                            <div class="room-ic room-ic-discount">
+                                                <div class="txt0">35<span>%</span></div>
+                                                <div class="txt1">DISCOUNT</div>
+                                            </div>
+                                            <div class="room-price">
+                                                <div class="txt1"><span>&#8358 9,500</span></div>
+                                                <div class="txt2">PER NIGHT</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="room-wrapper" >
+                                <div class="room-inner" >
+                                    <div class="room" >
+                                        <figure>
+                                            <img src="{% static 'img/pages/comfort_hall.jpg' %}" alt="" class="img-fluid">
+                                            <figcaption>
+                                                <div class="txt1">COMFORT HALL</div>
+                                                <div class="txt2">START FROM &#8358 200,000</div>
+                                            </figcaption>
+                                        </figure>
+                                        <div class="caption">
+                                            <div class="txt1">COMFORT HALL</div>
+                                            <div class="txt2">
+                                                39 REVIEW
+                                                <div class="small-stars">
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                </div>
+                                            </div>
+                                            <div class="txt3">
+                                                Comfort Hall is well equipped for your events such as birthdays, wedding receptions and what have you. It is fully air conditioned with a capacity of not less than 500 people.
+                                            </div>
+                                        </div>
+                                        <div class="select-txt">
+                                            <a href="{% url 'book' %}?type=comfort"><span>BOOK THIS HALL<i class="fa fa-angle-right" aria-hidden="true"></i></span></a>
+                                        </div>
+                                        <div class="room-icons">
+                                            <div class="room-ic room-ic-wifi">
+                                                <i class="fa fa-wifi" aria-hidden="true"></i>
+                                                <div class="txt1">FREE WIFI</div>
+                                            </div>
+                                            <div class="room-ic room-ic-discount">
+                                                <div class="txt0">35<span>%</span></div>
+                                                <div class="txt1">DISCOUNT</div>
+                                            </div>
+                                            <div class="room-price">
+                                                <div class="txt1"><span>&#8358 39,000</span></div>
+                                                <div class="txt2">FOR RENT</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="room-wrapper">
+                                <div class="room-inner">
+                                    <div class="room">
+                                        <figure>
+                                            <img src="{% static 'img/pages/veronica_hall.jpg' %}" alt="" class="img-fluid">
+                                            <figcaption>
+                                                <div class="txt1">VERONICA HALL</div>
+                                                <div class="txt2">START FROM &#8358 150,000</div>
+                                            </figcaption>
+                                        </figure>
+                                        <div class="caption">
+                                            <div class="txt1">VEROICA HALL</div>
+                                            <div class="txt2">
+                                                87 REVIEW
+                                                <div class="small-stars">
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                </div>
+                                            </div>
+                                            <div class="txt3">
+                                               Veronica Hall is well equipped for your events such as birthdays, wedding receptions and what have you. It is fully air conditioned with a capacity of not less than 500 people.
+                                           </div>
+                                        </div>
+                                        <div class="select-txt">
+                                            <a href="{% url 'book' %}?type=veronica"><span>BOOK THIS HALL<i class="fa fa-angle-right" aria-hidden="true"></i></span></a>
+                                        </div>
+                                        <div class="room-icons">
+                                            <div class="room-ic room-ic-wifi">
+                                                <i class="fa fa-wifi" aria-hidden="true"></i>
+                                                <div class="txt1">FREE WIFI</div>
+                                            </div>
+                                            <div class="room-ic room-ic-discount">
+                                                <div class="txt0">35<span>%</span></div>
+                                                <div class="txt1">DISCOUNT</div>
+                                            </div>
+                                            <div class="room-price">
+                                                <div class="txt1"><span>&#8358 150,000</span></div>
+                                                <div class="txt2">FOR RENT</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end of Third row for room -->
+
+                    
+
+                </div>
+               
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

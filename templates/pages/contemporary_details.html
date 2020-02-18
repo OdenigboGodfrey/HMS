@@ -1,0 +1,109 @@
+{% extends 'pages/base_site.html' %}
+{% load static %}
+
+{% block title %} Details | Contemporary Suite {% endblock %}
+
+{% block container %}
+
+<div class="breadcrumbs1_wrapper">
+        <div class="container">
+            <div class="breadcrumbs1"><a href="{% url 'home' %}">Home</a><span>|</span>Details</div>
+        </div>
+    </div>
+    <div id="content">
+        <div class="container">
+
+            <div class="title1">GLORAN CONTEMPORARY SUITE</div>
+
+            <div class="title2">Thanks for selecting this room. Read the details and proceed to book</div>
+
+            <div class="slider2-wrapper">
+                <div class="slider-for2">
+                    <div class="slider-item">
+                        <img src="{% static 'img/pages/contemporary_suit_b1.jpg' %}" alt="" class="img-fluid">
+                    </div>
+                    <div class="slider-item">
+                        <img src="{% static 'img/pages/contemporary_suit_c1.jpg' %}" alt="" class="img-fluid">
+                    </div>
+                    <div class="slider-item">
+                        <img src="{% static 'img/pages/contemporary_suit_d1.jpg' %}" alt="" class="img-fluid">
+                    </div>
+                    <div class="slider-item">
+                        <img src="{% static 'img/pages/contemporary_suit_e1.jpg' %}" alt="" class="img-fluid">
+                    </div>
+                    <div class="slider-item">
+                        <img src="{% static 'img/pages/contemporary_suit_f1.jpg' %}" alt="" class="img-fluid">
+                    </div>
+                    <div class="slider-item">
+                        <img src="{% static 'img/pages/contemporary_suit_g1.jpg' %}" alt="" class="img-fluid">
+                    </div>
+                </div>
+
+                <div class="slider-nav2">
+                    <div class="slider-item">
+                        <div class="slider-item-inner">
+                            <img src="{% static 'img/pages/contemporary_suit_b1.jpg' %}" style="height: 150px; width: 150px" alt="" class="img-fluid">
+                        </div>
+                    </div>
+                    <div class="slider-item">
+                        <div class="slider-item-inner">
+                            <img src="{% static 'img/pages/contemporary_suit_c1.jpg' %}" style="height: 150px; width: 150px" alt="" class="img-fluid">
+                        </div>
+                    </div>
+                    <div class="slider-item">
+                        <div class="slider-item-inner">
+                            <img src="{% static 'img/pages/contemporary_suit_d1.jpg' %}" style="height: 150px; width: 150px" alt="" class="img-fluid">
+                        </div>
+                    </div>
+                    <div class="slider-item">
+                        <div class="slider-item-inner">
+                            <img src="{% static 'img/pages/contemporary_suit_e1.jpg' %}" style="height: 150px; width: 150px" alt="" class="img-fluid">
+                        </div>
+                    </div>
+                    <div class="slider-item">
+                        <div class="slider-item-inner">
+                            <img src="{% static 'img/pages/contemporary_suit_f1.jpg' %}" style="height: 150px; width: 150px" alt="" class="img-fluid">
+                        </div>
+                    </div>
+                    <div class="slider-item">
+                        <div class="slider-item-inner">
+                            <img src="{% static 'img/pages/contemporary_suit_g1.jpg' %}" style="height: 150px; width: 150px" alt="" class="img-fluid">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="details-wrapper clearfix">
+                <div class="txt2">GLORAN CONTEMPORARY SUITE</div>
+                <div class="txt4">
+                    <p>
+                        Gloran contemporary suites are packaged to meet international standards. ...We offer you equal value for your money. 
+                    </p>
+                </div>
+                <div class="details-caption">
+                    <div class="txt1">01</div>
+                    <div class="txt21">GLORAN CONTEMPORARY SUITE</div>
+                </div>
+            </div>
+
+            <div class="details2-wrapper">
+                <div class="row  align-items-start">
+                    <div class="col-md-4">
+                        <div class="details2-info">
+                            <div class="check1">{% if contemporary and contemporary > 0 %}{{contemporary}}: <span>AVAILABLE</span>{% else %} UNAVAILABLE {% endif %}</div>
+                            <div>
+                                <a href="#" class="details2-link">
+                                    <div class="txt1">&#8358 32,500 <span>TOTAL</span></div>
+                                    {% if contemporary and contemporary > 0 %}<a href="{% url 'book' %}?type=contemporary"><div class="txt2">RESERVE THIS ROOM</div></a>{% endif %}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}
